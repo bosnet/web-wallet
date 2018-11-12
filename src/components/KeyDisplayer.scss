@@ -1,0 +1,92 @@
+@import '../assets/sass/vendors/response';
+
+.key-boxes {
+	border: 1px solid #0094bd;
+	border-radius: 10px;
+	padding: 20px 22px;
+	text-align: left;
+	position: relative;
+	margin: 23px auto 10px;
+
+	.caption {
+		position: absolute;
+		font-size: 11px;
+		color: #0094bd;
+		padding: 10px;
+		background: #ffffff;
+		left: 50%;
+		top: 0;
+		transform: translate( -50%, -50% );
+		display: none;
+
+		@include response(md) {
+			font-size: 17px;
+			display: block;
+		}
+	}
+
+	.label {
+		position: relative;
+		font-size: 12px;
+		width: 100%;
+		font-weight: 200;
+		margin-bottom: 8px;
+
+		@include response(md) {
+			font-size: 15px;
+			width: 115px;
+			top: 3px;
+		}
+	}
+
+	.key {
+		position: relative;
+		word-break: break-all;
+		font-size: 12px;
+		width: calc( 100% - 65px );
+		font-family: 'Noto Sans KR', sans-serif;
+		font-weight: 500;
+
+		@include response(md) {
+			font-size: 17px;
+			width: calc( 100% - 100px - 115px );
+			top: 1px;
+		}
+	}
+
+	.copy-button {
+		text-align: right;
+		width: 65px;
+
+		@include response(md) {
+			width: 100px;
+		}
+	}
+
+	hr {
+		height: 1px;
+		border: none;
+		color: #e2e2e2;
+		background: #e2e2e2;
+		margin: 17px auto;
+	}
+
+	@include response(md) {
+		border-width: 2px;
+	}
+}
+
+.dark-theme {
+	.key-boxes {
+		border: 1px solid #5c5c74;
+		color: #ffffff;
+	}
+
+	.caption {
+		color: #5c5c74;
+		background: transparent;
+		background-image: url('../assets/imgs/background-gradation.png');
+		background-size: 100% 100vh;
+		background-position-y: -510px;
+	}
+}

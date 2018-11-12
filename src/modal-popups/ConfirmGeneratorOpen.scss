@@ -1,0 +1,33 @@
+@import '../assets/sass/vendors/response';
+
+.confirm-open-container {
+	padding: 28px;
+
+	h1 {
+		margin-bottom: 5px;
+	}
+
+	.button-wrapper {
+		margin: 20px;
+		padding: 0;
+
+		@include response(md) {
+			margin-top: 0;
+			padding-top: 20px;
+		}
+	}
+
+	img {
+		width: 100px;
+
+		@include response(md) {
+			width: 140px;
+			margin-top: 20px;
+		}
+	}
+
+	.show-desktop-block {
+		display: block;
+	}
+
+}

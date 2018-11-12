@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,700');
+@import 'assets/sass/vendors/response';
+
+@font-face {
+	font-family: "San Francisco Display Ultralight";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "San Francisco Display Thin";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "San Francisco Display Medium";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "San Francisco Display Semibold";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "San Francisco Display Bold";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.ttf) format("truetype");
+}
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+//@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanssc.css);
+
+html, body,
+input, textarea, select, button {
+	font-family: sans-serif;
+}
+
+:lang(en) {
+	body,
+	input, textarea, select, button {
+		font-family: 'Exo 2', sans-serif;
+	}
+}
+
+:lang(ko) {
+	body,
+	input, textarea, select, button {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+}
+
+:lang(zh) {
+	body,
+	input, textarea, select, button {
+		font-family: 'Noto Sans SC', sans-serif;
+	}
+}
+
+* {
+	box-sizing: border-box;
+	word-break: keep-all;
+}
+
+html {
+	background-color: #20202e;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-size: contain;
+	background-position: center bottom;
+	background-image: url('assets/imgs/background-gradation.png');
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+
+	&.test-mode {
+		background-image: url('assets/imgs/test-background-gradation.png');
+	}
+}
+
+.App {
+	position: relative;
+	min-height: 100vh;
+	padding: 14px;
+	overflow-x: hidden;
+	text-align: center;
+
+	@include response(md) {
+		padding: 40px 50px 50px;
+	}
+
+	.copyright {
+		position: absolute;
+		bottom: 50px;
+		font-size: 12px;
+		font-family: 'Exo 2', sans-serif;
+		color: #ffffff;
+		width: 100%;
+		right: 0;
+		text-align: center;
+
+		@include response(md) {
+			display: block;
+			width: auto;
+			right: 50px;
+		}
+	}
+}
+
+.App-logo {
+	animation: App-logo-spin infinite 20s linear;
+	height: 80px;
+}
+
+.App-header {
+	background-color: #222;
+	height: 150px;
+	padding: 20px;
+	color: white;
+}
+
+.App-intro {
+	font-size: large;
+}
+
+.button-wrapper {
+	text-align: center;
+	margin: 28px auto;
+
+	button:first-child {
+		margin-right: 1em;
+	}
+
+	@include response(md) {
+		margin: 46px auto;
+	}
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/*
+	앱 전역에 사용되는 공통 클래스
+ */
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: center;
+}
+
+.hide-desktop {
+	@include response(md) {
+		display: none;
+	}
+}
+
+.show-desktop-block {
+	display: none;
+
+	@include response(md) {
+		display: block;
+	}
+}
+
+.content-wrapper {
+	min-height: calc( 100vh - 44px - 76px );
+	padding: 46px 13px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include response(md) {
+		min-height: calc( 100vh - 79px - 100px );
+	}
+}
+
+.lt-ie12 {
+	.content-container {
+		display: table;
+		width: 100%;
+	}
+
+	.content-middle-wrapper {
+		display: table-row;
+	}
+
+	.content-wrapper {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}

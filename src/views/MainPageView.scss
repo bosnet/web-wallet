@@ -1,0 +1,114 @@
+@import '../assets/sass/vendors/response';
+
+.main-page-container {
+	text-align: center;
+	position: relative;
+	font-family: 'Exo 2', sans-serif;
+	color: #ffffff;
+
+	.main-logo {
+		width: 280px;
+		margin-bottom: 19px;
+
+		@include response(md) {
+			width: auto;
+		}
+	}
+
+	.tablize {
+		min-height: calc(100vh - 110px);
+
+		.cell {
+			padding: 38px 0 28px;
+
+			@include response(md) {
+				padding: 114px 0 84px;
+			}
+		}
+	}
+
+	.symbol-image-container {
+		text-align: center;
+		position: relative;
+		width: 75%;
+		left: 0;
+		margin: auto;
+		padding: 20% 0 10%;
+	}
+
+	.title {
+		font-size: 20px;
+		margin: 0 0 10px;
+		font-weight: 300;
+
+		@include response(md) {
+			font-size: 36px;
+		}
+	}
+
+	.title + p {
+		font-size: 12px;
+		line-height: 150%;
+		margin: 0 0 20px;
+		font-weight: 200;
+
+		@include response(md) {
+			font-size: 17px;
+		}
+	}
+
+	.button-group {
+		line-height: 40px;
+
+		@include response(md) {
+			line-height: 60px;
+		}
+	}
+
+	.button-container {
+		@include response(md) {
+			margin-bottom: 20%;
+		}
+		button {
+			margin-bottom: 10px;
+		}
+	}
+
+	.test-mode {
+		font-size: 35px;
+		font-weight: bold;
+
+		strong {
+			color: #ff0000;
+		}
+
+		@include response(md) {
+			font-size: 70px;
+		}
+	}
+
+	.maintenance {
+		.label {
+			font-size: 12px;
+			color: #838391;
+			margin-bottom: 3px;
+		}
+
+		.time {
+			font-size: 20px;
+			color: #0094bd;
+			font-weight: normal;
+			margin-bottom: 16px;
+			font-family: 'Exo 2', sans-serif;
+		}
+
+		hr {
+			width: 84px;
+			height: 1px;
+			border: none;
+			color: #e2e2e2;
+			background: #e2e2e2;
+			margin: 27px auto;
+		}
+	}
+}

@@ -1,0 +1,66 @@
+@import '../assets/sass/vendors/response';
+
+.transaction-complete-container {
+	padding: 18px;
+
+	h1 {
+		font-size: 1.5em;
+		margin-bottom: 0;
+		font-weight: 500;
+
+		@include response(md) {
+			font-size: 2em;
+		}
+	}
+
+	.under-line {
+		position: relative;
+		display: inline-block;
+		width: 3em;
+		height: 2px;
+		background-color: #000000;
+
+		@include response(md) {
+			width: 5em;
+		}
+	}
+
+	p {
+		color: #f40b20;
+		font-style: italic;
+		font-size: 11px;
+	}
+
+	.amount-text {
+		font-size: 12px;
+		font-weight: 200;
+		color: #039cbf;
+		margin: 1em 0 0;
+
+		@include response(md) {
+			font-size: 17px;
+		}
+
+		&.bold {
+			margin-top: 0;
+			font-weight: bold;
+		}
+	}
+
+	.transaction-amount {
+		font-size: 50px;
+		font-weight: 200;
+		font-style: normal;
+		margin: 0;
+		font-family: 'San Francisco Display Ultralight', sans-serif;
+		color: #039cbf;
+
+		@include response(md) {
+			margin: 10px 0;
+		}
+	}
+
+	.button-wrapper button.blue-button {
+		margin-right: 0;
+	}
+}

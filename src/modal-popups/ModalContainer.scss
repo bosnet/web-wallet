@@ -1,0 +1,86 @@
+@import '../assets/sass/vendors/response';
+
+.modal-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+
+	&.open {
+		display: block;
+	}
+}
+
+.modal-wrapper {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	background-color: #ffffff;
+
+	@include response(md) {
+		//top: 50%;
+		//transform: translateY(-50%);
+		//min-height: 658px;
+		//height: 100vh;
+		//height: auto;
+	}
+
+	@media (max-height: 658px) {
+		height: 100vh;
+		overflow: auto;
+
+		// override App.scss
+		.content-wrapper {
+			min-height: calc(100vh);
+
+			&>div {
+				max-height: 100%;
+				overflow: auto;
+			}
+		}
+	}
+
+	.content-wrapper {
+		height: 100vh;
+	}
+}
+
+.close-modal-button-x {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background: transparent;
+	height: 20px;
+	width: 20px;
+	padding: 0;
+	border: none;
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: -5px;
+		width: 25px;
+		height: 1px;
+		background-color: #000000;
+		transform: rotate(45deg);
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: -5px;
+		width: 25px;
+		height: 1px;
+		background-color: #000000;
+		transform: rotate(-45deg);
+	}
+
+	@include response(md) {
+		display: none;
+	}
+}

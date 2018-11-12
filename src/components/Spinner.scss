@@ -1,0 +1,56 @@
+.spinner-container {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.9);
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+
+	&.show {
+		display: block;
+	}
+
+	.spinner {
+		width: 51px;
+		height: 58px;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate3D(-50%, -50%, 0);
+		animation: spinnerAnimation 1500ms infinite step-end;
+		background: url('../assets/imgs/spinners/sheet.png') no-repeat 0 0;
+		background-size: 51px auto;
+	}
+}
+
+@keyframes spinnerAnimation {
+	0% {
+		background-position: 0 0;
+	}
+
+	16.6% {
+		background-position: 0 -58px;
+	}
+
+	33.2% {
+		background-position: 0 -116px;
+	}
+
+	49.8% {
+		background-position: 0 -174px;
+	}
+
+	66.4% {
+		background-position: 0 -232px;
+	}
+
+	83% {
+		background-position: 0 -290px;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}

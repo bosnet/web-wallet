@@ -1,0 +1,108 @@
+@import '../assets/sass/vendors/response';
+
+.history-table-container {
+	width: 100%;
+	font-size: 10px;
+	color: #ffffff;
+	padding: 0 16px;
+	margin-top: 20px;
+
+	@include response(md) {
+		font-size: 14px;
+		padding: 0 0 0 16px;
+	}
+
+	p {
+		color: #039cbf;
+		margin: 0.5em 0;
+	}
+
+	.h-group {
+		padding: 8px 0;
+		border-bottom: 1px solid #5c5c74;
+		margin-bottom: 1px;
+
+		@include response(md) {
+			padding: 0;
+			border-bottom: none;
+		}
+	}
+
+	.label {
+		width: 100%;
+		font-weight: 200;
+		color: #039cbf;
+
+		@include response(md) {
+			width: 100px;
+		}
+	}
+
+	.target {
+		width: 100%;
+		min-height: 30px;
+		word-break: break-all;
+		font-weight: 200;
+
+		@include response(md) {
+			width: calc( 100% - 100px - 150px - 120px );
+			min-height: auto;
+		}
+	}
+
+	.amount {
+		width: calc( 100% - 100px );
+		text-align: right;
+		font-size: 13px;
+
+		@include response(md) {
+			width: 150px;
+			font-size: 14px;
+		}
+	}
+
+	.date {
+		width: 100px;
+		text-align: right;
+		font-weight: 200;
+		font-size: 13px;
+
+		@include response(md) {
+			width: 120px;
+			font-size: 14px;
+		}
+	}
+
+	.more-wrapper {
+		text-align: right;
+		color: #5c5c74;
+		font-size: 10px;
+
+		&.is-more {
+			display: block;
+
+			&:after {
+				content: '';
+				display: inline-block;
+				background-image: url('../assets/imgs/gray-arrow-down-head.png');
+				background-size: cover;
+				width: 6px;
+				height: 3px;
+				margin-bottom: 1px;
+
+				@include response(md) {
+					width: 11px;
+					height: 6px;
+				}
+			}
+		}
+
+		span {
+			cursor: pointer;
+		}
+
+		@include response(md) {
+			font-size: 14px;
+		}
+	}
+}

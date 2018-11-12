@@ -1,0 +1,83 @@
+@import '../assets/sass/vendors/response';
+
+.select-box-styled {
+	position: relative;
+	display: inline-block;
+	font-family: 'Exo 2', sans-serif;
+	width: 115px;
+	height: 22px;
+	top: 5px;
+	text-align: left;
+	background-color: #29263d;
+	color: #ffffff;
+	border-radius: 11px;
+	padding: 4px 12px;
+	margin-left: 8px;
+	font-size: 12px;
+
+	&.is-open {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	@include response(md) {
+		width: 133px;
+		height: 36px;
+		top: 3px;
+		border-radius: 18px;
+		font-size: 16px;
+		margin-left: 15px;
+		padding: 8px 0 0 24px;
+	}
+}
+
+.select-box-styled:after {
+	content: '';
+	width: 15px;
+	height: 8px;
+	top: 9px;
+	right: 8px;
+	display: block;
+	position: absolute;
+	background: url('../assets/imgs/arrow-down-head.png') no-repeat;
+	background-size: 7px 4px;
+
+	@include response(md) {
+		top: 14px;
+		right: 12px;
+		background-size: 14px;
+	}
+}
+
+.select-box-list {
+	display: none;
+	position: absolute;
+	top: 22px;
+	left: 0;
+	border-bottom-left-radius: 18px;
+	border-bottom-right-radius: 18px;
+	background-color: #29263d;
+	width: 115px;
+	z-index: 999;
+
+	@include response(md) {
+		top: 36px;
+		width: 133px;
+	}
+}
+
+.select-box-list p {
+	padding: 6px 0 6px 12px;
+
+	@include response(md) {
+		padding: 6px 0 6px 24px;
+	}
+}
+
+.select-box-list p:hover {
+	background-color: #1b1b26;
+}
+
+.select-box-list.select-box-open {
+	display: block;
+}

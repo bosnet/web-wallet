@@ -24,7 +24,39 @@ class HistoryTable extends Component {
   }
 
   componentDidMount() {
-    this.buildHistory();
+    const { keypair } = this.props;
+
+    if( !keypair) {
+      return;
+    }
+
+    this.props.resetHistory();
+    fetch(`${config.api_url}/accounts/${keypair.publicKey()}/transactions?reverse=true`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((data) => {
+
+        console.log(data);
+        let { records } = data._embedded;
+        records = records.map(e => ({
+          created: e.created,
+          hash: e.hash,
+          fee: Number(Number(e.fee)/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+        }))
+
+        this.props.streamPayment(records);
+
+      })
+      .then(() => {
+        this.buildHistory();
+      });
+    
+    console.log("HistoryTable Mount");
   }
   
   buildHistory = () => {
@@ -120,7 +152,7 @@ class HistoryTable extends Component {
 							target = '-';
 						}
 					}
-					amount = payment.body.amount;
+					amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					break;
 				case 'payment' :
 					const from = payment.source;
@@ -132,7 +164,7 @@ class HistoryTable extends Component {
 						label = 'wallet_view.received';
 						target = payment.source;
 					}
-					amount = payment.body.amount;
+					amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					break;
 				default :
 					break;
@@ -143,7 +175,7 @@ class HistoryTable extends Component {
 					<div className="col label"><T.span text={label}/></div>
 					<div className="col target">{target}</div>
 					<div className="col amount">
-						<AmountSpan value={ trimZero( amount ) }/>
+						<AmountSpan value={amount}/>
 					</div>
 					<div className="col date">{date}</div>
 				</div>;
@@ -181,9 +213,15 @@ const mapStoreToProps = ( store ) => ( {
 
 // Redux
 const mapDispatchToStore = ( dispatch ) => ( {
+  streamPayment: ( $payment ) => {
+		dispatch( actions.streamPayment( $payment ) );
+	},
   streamOperations: ( $index, $operations ) => {
     dispatch( actions.streamOperations( $index, $operations ) );
   },
+  resetHistory: () => {
+		dispatch( actions.resetHistory() );
+	},
 } );
 
 HistoryTable = connect( mapStoreToProps, mapDispatchToStore )( HistoryTable );

@@ -7,9 +7,10 @@ class AmountSpan extends Component {
 		const integer = array[ 0 ];
 		const decimal = array[ 1 ] !== undefined ? array[ 1 ] : '0';
 		return <span className={ 'amount-span' }>
-			<span className={ 'amount-span-integer' }>{ integer }</span>
+			{/* <span className={ 'amount-span-integer' }>{ integer }</span>
 			.
-			<span className={ 'amount-span-decimal' }>{ decimal }</span>
+      <span className={ 'amount-span-decimal' }>{ decimal }</span> */}
+      {this.props.value}
 		</span>;
 	}
 }

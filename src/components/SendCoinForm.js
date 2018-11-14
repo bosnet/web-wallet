@@ -85,10 +85,10 @@ class SendCoinForm extends Component {
 			this.setState( { error: "send_coin.error.not_enough_balance" } );
 			return false;
 		}
-		if ( balance - this.state.transactionTotal < config.minimum_balance ) {
-			this.setState( { error: "send_coin.error.minimum_balance" } );
-			return false;
-		}
+		// if ( balance - this.state.transactionTotal < config.minimum_balance ) {
+		// 	this.setState( { error: "send_coin.error.minimum_balance" } );
+		// 	return false;
+		// }
 		const numbers = this.state.transactionTotal.toString().split( '.' );
 		if( numbers.length > 1 ) {
 			if( numbers[ 1 ].length > 7 ) {
@@ -173,7 +173,7 @@ class SendCoinForm extends Component {
 									 onChange={ this.onChange }
 						/>
 						<p className="sending-amount">
-							{T.translate( 'send_coin.total_will_be_sent', { amount: trimZero( this.state.transactionTotal ) } )}
+							{T.translate( 'send_coin.total_will_be_sent', { amount: Number( this.state.transactionTotal ).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') } )}
 						</p>
 					</div>
 				</div>

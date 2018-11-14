@@ -200,7 +200,7 @@ class TransactionConfirm extends Component {
 							<tr>
 								<td>{T.translate( "common.amount" )}</td>
 								<td>
-									<AmountSpan value={ amount }/> BOS
+									<AmountSpan value={ Number(amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
 								</td>
 							</tr>
 							<tr>
@@ -214,7 +214,7 @@ class TransactionConfirm extends Component {
 									{T.translate( "common.total_amount" )}
 								</td>
 								<td>
-									<AmountSpan value={ total }/> BOS
+									<AmountSpan value={ Number(total).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
 								</td>
 							</tr>
 							</tbody>

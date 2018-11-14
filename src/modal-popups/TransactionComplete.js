@@ -30,7 +30,7 @@ class TransactionComplete extends Component {
 						{T.translate( 'common.total_amount' )}
 					</p>
 					<p className="transaction-amount">
-						<AmountSpan value={ amount }/> BOS
+						<AmountSpan value={  Number(amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '')  }/> BOS
 					</p>
 					<p className="button-wrapper">
 						<BlueButton medium

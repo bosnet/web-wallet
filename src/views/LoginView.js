@@ -81,31 +81,7 @@ class LoginView extends Component {
           this.props.updateKeypair(keypair);
           store.keypair = keypair;
 
-
-          fetch(`${config.api_url}/accounts/${keypair.publicKey()}/transactions?reverse=true`, {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-          })
-            .then(response => response.json())
-            .then((data) => {
-
-
-              let { records } = data._embedded;
-              records = records.map(e => ({
-                created: e.created,
-                hash: e.hash,
-              }))
-              console.log(records.length)
-
-              this.props.streamPayment(records);
-
-            })
-            .then(() => {
-              this.setState({ isValid: true });
-            });          
+          this.setState({ isValid: true });       
         }
       }
       else {
@@ -137,30 +113,7 @@ class LoginView extends Component {
       this.props.updateKeypair( keypair );
       store.keypair = keypair;
 
-
-      fetch(`${config.api_url}/accounts/${keypair.publicKey()}/transactions?reverse=true`, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then((data) => {
-
-
-          let { records } = data._embedded;
-          records = records.map(e => ({
-            created: e.created,
-            hash: e.hash,
-          }))
-
-          this.props.streamPayment(records);
-
-        })
-        .then(() => {
-          this.setState({ isValid: true });
-        });
+      this.setState({ isValid: true });
     })
     .catch( error => {
       this.props.updateKeypair( null );

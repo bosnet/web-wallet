@@ -33,20 +33,37 @@ class TransactionConfirm extends Component {
     const account = this.props.account;
 
 		const sendPayment = callback => {
-      makeTransaction(this.props.keypair, paymentData.destination, paymentData.amount, 'payment', account.sequence_id )
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        if(result.status === 'submitted') {
-          callback( null, false );
-        }
-        else {
-          const $error = result.title;
-          callback( $error );
-        }
-      })
-      
+			fetch(`${config.api_url}/accounts/${this.props.keypair.publicKey()}`, {
+				method: 'GET',
+				timeout: 3000,
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+			})
+			.then(res => {
+				return res.json()
+			})
+			.then(account => {
+				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				this.props.streamAccount(account);
+			})
+			.then(() => {
+				makeTransaction(this.props.keypair, paymentData.destination, paymentData.amount, 'payment', 	this.props.account.sequence_id)
+					.then((response) => {
+						return response.json();
+					})
+					.then((result) => {
+						if (result.status === 'submitted') {
+							callback(null, false);
+						}
+						else {
+							const $error = result;
+							callback($error);
+						}
+					})
+				
+			})
 
       // StellarOperations.sendPayment( this.props.paymentData )( this.props.keypair )
 			// 	.then( () => {
@@ -63,19 +80,36 @@ class TransactionConfirm extends Component {
 		};
 
 		const createAccount = callback => {
-      makeTransaction(this.props.keypair, paymentData.destination, paymentData.amount, 'create', account.sequence_id )
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        if(result.status === 'submitted') {
-          callback( null, false );
-        }
-        else {
-          const $error = result.title;
-          callback( $error );
-        }
-      })
+			fetch(`${config.api_url}/accounts/${this.props.keypair.publicKey()}`, {
+				method: 'GET',
+				timeout: 3000,
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+			})
+			.then(res => {
+				return res.json()
+			})
+			.then(account => {
+				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				this.props.streamAccount(account);
+			})
+			.then(() => {
+				makeTransaction(this.props.keypair, paymentData.destination, paymentData.amount, 'create', 	this.props.account.sequence_id )
+				.then((response) => {
+					return response.json();
+				})
+				.then((result) => {
+					if(result.status === 'submitted') {
+						callback( null, false );
+					}
+					else {
+						const $error = result;
+						callback( $error );
+					}
+				})
+			})
 		};
 
 		const onQueueComplete = ( $error, $result ) => {
@@ -128,9 +162,10 @@ class TransactionConfirm extends Component {
 	render() {
 		let amount = 0;
 		let total = 0;
+		
 		if ( this.props.paymentData ) {
-			amount = trimZero( this.props.paymentData.amount );
-			total = trimZero( this.props.paymentData.transactionTotal );
+			amount = this.props.paymentData.amount;
+			total = this.props.paymentData.transactionTotal;
 		}
 		return (
 			<ModalContainer modalOpen={this.props.modalOpen} doClose={this.hideTransactionConfirm}>
@@ -161,9 +196,9 @@ class TransactionConfirm extends Component {
 					{ this.state.showErrorDetail &&
 					<div>
 						<p>Error Code</p>
-						<pre>{ this.state.error.extras.result_codes.transaction }</pre>
+						<pre>{ this.state.error.title }</pre>
 						<p>Code</p>
-						<pre>{ JSON.stringify( this.state.error.extras.result_codes, null, 2 ) }</pre>
+						<pre>{ JSON.stringify( this.state.error) }</pre>
 					</div>
 					}
 					<div className={ 'text-center'}>
@@ -237,6 +272,9 @@ const mapStoreToProps = ( store ) => ({
 });
 
 const mapDispatchToProps = ( dispatch ) => ({
+	streamAccount: ( $account ) => {
+		dispatch( actions.streamAccount( $account ) );
+	},
 	showSpinner: ( $isShow ) => {
 		dispatch( actions.showSpinner( $isShow ) );
 	},

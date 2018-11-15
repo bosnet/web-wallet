@@ -17,7 +17,7 @@ class TransactionComplete extends Component {
 	render() {
 		let amount = 0;
 		if ( this.props.paymentData ) {
-			amount = trimZero( this.props.paymentData.transactionTotal );
+			amount = this.props.paymentData.transactionTotal;
 		}
 		return (
 			<ModalContainer modalOpen={this.props.modalOpen} doClose={this.closeTransactionComplete}>

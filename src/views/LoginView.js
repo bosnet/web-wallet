@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 import BlueButton from 'components/BlueButton';
 import './LoginView.scss';
 import { Redirect } from "react-router-dom";
-import { StellarServer, StellarTools } from 'libs/stellar-toolkit';
+import { StellarTools } from 'libs/stellar-toolkit';
 import * as actions from "actions/index";
 import { connect } from "react-redux";
 import T from 'i18n-react';
 import StreamManager from "../StreamManager";
-import { StellarStreamers } from 'libs/stellar-toolkit';
 import pageview from 'utils/pageview';
 import store from '../observables/store';
 const config = require( 'config.json' );
-
-const { getAccount } = StellarServer;
-const { OffersStream, EffectsStream, AccountStream, PaymentStream } = StellarStreamers;
 
 class LoginView extends Component {
 	constructor() {
@@ -54,7 +50,6 @@ class LoginView extends Component {
       return res.json()
     })
     .then(account => {
-      console.log(account);
 
       if( this.props.keypair ) {
         if( this.props.keypair.publicKey() !== keypair.publicKey() ) {

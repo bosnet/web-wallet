@@ -9,7 +9,6 @@ import { StellarTools } from 'libs/stellar-toolkit';
 import TextAlert from "./TextAlert";
 import AmountInput from "./AmountInput";
 import Decimal from 'decimal.js';
-import trimZero from "../utils/trimZero";
 
 const config = require( 'config.json' );
 

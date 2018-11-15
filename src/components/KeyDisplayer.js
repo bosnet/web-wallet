@@ -7,7 +7,6 @@ import * as actions from '../actions/index';
 import Clipboard from 'clipboard';
 import { each } from 'underscore';
 import classNames from 'classnames';
-import store from '../observables/store';
 import { observer } from 'mobx-react';
 
 class KeyDisplayer extends Component {

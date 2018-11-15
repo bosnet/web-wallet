@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import './MyBalance.scss';
 import { connect } from 'react-redux';
 import AmountSpan from "./AmountSpan";
-import trimZero from "../utils/trimZero";
 import * as actions from "actions/index";
 const config = require( 'config.json' );
 
 class MyBalance extends Component {
 
   componentDidMount() {
-    console.log("My Balance Mount");
-
     const { keypair } = this.props;
 
     if( !keypair) {
@@ -40,8 +37,6 @@ class MyBalance extends Component {
 			balance = this.props.account.balance;
     }
     
-    console.log(this.props.account);
-
 		return (
 			<div className="balance-container">
 				<p id="balance">

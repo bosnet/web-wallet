@@ -4,7 +4,6 @@ import './HistoryTable.scss';
 import { connect } from "react-redux";
 import moment from 'moment';
 import AmountSpan from "./AmountSpan";
-import trimZero from "../utils/trimZero";
 import * as actions from "actions/index";
 const config = require( 'config.json' );
 
@@ -40,8 +39,6 @@ class HistoryTable extends Component {
     })
       .then(response => response.json())
       .then((data) => {
-
-        console.log(data);
         let { records } = data._embedded;
         records = records.map(e => ({
           created: e.created,
@@ -55,12 +52,9 @@ class HistoryTable extends Component {
       .then(() => {
         this.buildHistory();
       });
-    
-    console.log("HistoryTable Mount");
   }
   
   buildHistory = () => {
-    const { history } = this.state;
     let data = this.props.paymentHistory;
     let length = data.length;
     const promises = [];
@@ -71,8 +65,6 @@ class HistoryTable extends Component {
     
     for ( let i = 0; i < length; i++ ) {
       const payment = data[ i ];
-      console.log(payment);
-
       // Not Loaded/api/v1/transactions/{hash}
       if(!payment.type) {
         promises.push(
@@ -90,8 +82,6 @@ class HistoryTable extends Component {
               operation.body.amount = Number(Number(operation.body.amount)/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 
               this.props.streamOperations(i, operation)
-
-              console.log(payment);
               
             })
         )
@@ -126,7 +116,7 @@ class HistoryTable extends Component {
 		if ( (this.state.historyPage + 1) * this.RENDER_ITEM_PER < length ) {
 			length = (this.state.historyPage + 1) * this.RENDER_ITEM_PER;
 		}
-    console.log(data);
+
 		for ( let i = 0; i < length; i++ ) {
       const payment = data[ i ];
       
@@ -169,7 +159,7 @@ class HistoryTable extends Component {
 				default :
 					break;
       }
-      console.log(target)
+
 			if ( label !== '' ) {
 				const DOM = <div className="h-group" key={`data-${i}`}>
 					<div className="col label"><T.span text={label}/></div>

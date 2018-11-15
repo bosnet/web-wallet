@@ -67,16 +67,12 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
 
 
   const RDPData = makeRLPData(HType, body.B);
-  console.log(JSON.stringify(RDPData));
-
   const hash = sebakjs.hash(RDPData);
   const sig = sebakjs.sign(hash, config.network_id, keypair.secret());
 
   body.H.hash = hash;
   body.H.signature = sig;
 
-  console.log(JSON.stringify(body));
-  // Clipboard.setString(JSON.stringify(body));
 
   return fetch(`${config.api_url}/transactions`, {
     method: 'POST',
@@ -87,32 +83,6 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
     },
     body: JSON.stringify(body),
   })
-    // .then((response) => {
-    //   console.log(response);
-
-    //   return response.json();
-    // })
-    // .then((res) => {
-    //   console.log(JSON.stringify(res));
-
-    //   if (res.status !== 'submitted') {
-    //     return ({
-    //       status: res.status,
-    //       title: res.title,
-    //       detail: res.detail,
-    //     });
-    //   }
-
-    //   return ({
-    //     status: 200,
-    //     transactionId: res.hash,
-    //     source: res.message.source,
-    //     fee: Number(res.message.fee) / 10000000,
-    //     amount: Number(res.message.operations[0].B.amount) / 10000000,
-    //     target: res.message.operations[0].B.target,
-    //   });
-    // });
-
 };
 
 export default makeTransaction;

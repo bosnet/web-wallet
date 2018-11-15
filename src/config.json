@@ -1,6 +1,6 @@
 {
 	"test_mode": true,
-	"api_url": "http://conall.co.kr:12345/api/v1",
+	"api_url": "https://testnet-sebak.blockchainos.org/api/v1",
 	"passphrases": "Test BOS Token Network ; tokennet.test; September 2017",
 	"transaction_fee": 0.001,
 	"minimum_balance": 0.1,
@@ -9,5 +9,5 @@
 	"active_make_a_new_key": true,
 	"active_create_test_account": true,
   "ga_id": "UA-108856157-1",
-  "network_id": "this-is-sebak-standalone"
+  "network_id": "sebak-test-network"
 }

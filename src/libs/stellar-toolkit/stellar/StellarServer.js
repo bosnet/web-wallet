@@ -59,9 +59,7 @@ let getServerInstance = function getServerInstance() {
 };
 
 let getAccount = function getAccount( accountId ) {
-  console.log('getAccount');
-  // return getServerInstance().loadAccount( accountId ).then( augmentAccount );
-  
+
   return fetch(`http://conall.co.kr:12345/api/v1/accounts/${accountId}`, {
     method: 'GET',
     timeout: 3000,

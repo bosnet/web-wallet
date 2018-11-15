@@ -5,19 +5,15 @@ import './TransactionConfirm.scss';
 import { connect } from "react-redux";
 import * as actions from "actions/index";
 import T from 'i18n-react';
-import * as StellarToolkit from 'libs/stellar-toolkit/index';
 import makeTransaction from 'libs/newTransaction';
 import async from 'async';
-import { find } from 'underscore';
 import AmountSpan from "components/AmountSpan";
 import ErrorPopup from "./ErrorPopup";
 import trimZero from "../utils/trimZero";
 import learnMoreIcon from 'assets/imgs/show-error-detail.png';
 import closeIcon from 'assets/imgs/hide-error-detail.png';
 import pageview from "utils/pageview";
-import axios from 'axios';
 
-const { StellarOperations } = StellarToolkit;
 const config = require( 'config.json' );
 
 class TransactionConfirm extends Component {
@@ -33,7 +29,6 @@ class TransactionConfirm extends Component {
 
 		const queue = [];
 
-    console.log(this.props.paymentData);
     const paymentData = this.props.paymentData;
     const account = this.props.account;
 

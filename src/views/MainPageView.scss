@@ -75,7 +75,7 @@
 	}
 
 	.test-mode {
-		font-size: 35px;
+		font-size: 30px;
 		font-weight: bold;
 
 		strong {
@@ -83,7 +83,7 @@
 		}
 
 		@include response(md) {
-			font-size: 70px;
+			font-size: 2rem;
 		}
 	}
 

@@ -5,13 +5,12 @@ import './MainPageView.scss';
 import { connect } from "react-redux";
 import * as actions from "actions/index";
 import { Redirect } from "react-router-dom";
+import { Keypair } from 'libs/stellar-sdk';
 import T from 'i18n-react';
 import moment from 'moment';
 
-import { StellarServer } from 'libs/stellar-toolkit';
 import pageview from 'utils/pageview';
 
-const { generateTestPair } = StellarServer;
 const config = require( 'config.json' );
 
 class MainPageView extends Component {
@@ -43,9 +42,36 @@ class MainPageView extends Component {
 		}
 	}
 
+	generateValidAccount = async () => {
+		const keypair = Keypair.random();
+		
+		return fetch(`${config.angelbot_url}/account/${keypair.publicKey()}`, {
+      method: 'GET',
+      timeout: 3000,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(account => {
+			if(!account.status) {
+				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				this.props.streamAccount(account);
+
+				return keypair;
+			}
+			else {
+				
+			}
+    })
+	}
+
 	createAccount() {
 		this.props.showSpinner( true );
-		generateTestPair()
+		this.generateValidAccount()
 			.then( ( newPair ) => {
 				this.props.showSpinner( false );
 				this.props.updateKeypair( newPair );
@@ -144,6 +170,9 @@ const mapDispatchToProps = ( dispatch ) => ({
 	},
 	showKeyGenerator: ( $isShow ) => {
 		dispatch( actions.showKeyGenerator( $isShow ) );
+	},
+	streamAccount: ( $account ) => {
+		dispatch( actions.streamAccount( $account ) );
 	},
 	updateKeypair: ( $keypair ) => {
 		dispatch( actions.updateKeypair( $keypair ) );

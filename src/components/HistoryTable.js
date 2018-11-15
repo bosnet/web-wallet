@@ -132,6 +132,7 @@ class HistoryTable extends Component {
 					if ( funder === me ) {
 						label = 'wallet_view.sent';
 						target = payment.body.target;
+						amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 					else {
 						label = 'wallet_view.created_account';
@@ -141,20 +142,23 @@ class HistoryTable extends Component {
 						else {
 							target = '-';
 						}
+						amount = Number(payment.body.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
-					amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				
 					break;
 				case 'payment' :
 					const from = payment.source;
 					if ( me === from ) {
 						label = 'wallet_view.sent';
 						target = payment.body.target;
+						amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 					else {
 						label = 'wallet_view.received';
 						target = payment.source;
+						amount = Number(payment.body.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
-					amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				
 					break;
 				default :
 					break;

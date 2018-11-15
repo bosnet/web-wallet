@@ -33,7 +33,6 @@ const makeRLPData = (type, body) => {
   return tx;
 };
 
-
 const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   let HType = 'payment';
   if (type === 'create') HType = 'create-account';
@@ -41,7 +40,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   const body = {
     T: 'transaction',
     H: {
-      version: '``',
+      version: '1',
       created: makeFullISOString(new Date().toISOString()),
       // 'hash': '2g3ZSrEnsUWeX5Mxz5uTh2b4KVpVQS7Ek2HzZd759FHn',
       // 'signature': '3oWmCMNHExRQnZVEBSH16ZBgLE6ayz7t1fsjzTjAB6WpXMpkDJbhcL8KudqFFG21XmfSXnJH1BLhnBUh4p68yFeR'

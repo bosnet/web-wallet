@@ -56,7 +56,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
           },
           B: {
             target,
-            amount: (amount * 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''), // 소수점 오차떄문에 Fixed 후 replace으로 변경 필요
+            amount: (amount * 10000000).toFixed(0),
             // linked: '',
           },
         },

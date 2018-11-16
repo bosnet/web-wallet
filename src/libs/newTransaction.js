@@ -10,11 +10,11 @@ const makeRLPData = (type, body) => {
   if (type === 'payment') {
     const tx = [
       body.source,
-      Number(body.fee),
-      Number(body.sequence_id),
+      body.fee,
+      body.sequence_id,
       [[
         [body.operations[0].H.type],
-        [body.operations[0].B.target, Number(body.operations[0].B.amount)],
+        [body.operations[0].B.target, body.operations[0].B.amount],
       ]],
     ];
     return tx;
@@ -22,11 +22,11 @@ const makeRLPData = (type, body) => {
 
   const tx = [
     body.source,
-    Number(body.fee),
-    Number(body.sequence_id),
+    body.fee,
+    body.sequence_id,
     [[
       [body.operations[0].H.type],
-      [body.operations[0].B.target, Number(body.operations[0].B.amount), ''],
+      [body.operations[0].B.target, body.operations[0].B.amount, ''],
     ]],
   ];
 
@@ -48,7 +48,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
     B: {
       source: keypair.publicKey(),
       fee: String('10000'),
-      sequence_id: (Number(lastSequenceId)),
+      sequence_id: String(lastSequenceId),
       operations: [
         {
           H: {

@@ -45,7 +45,7 @@ class MainPageView extends Component {
 	generateValidAccount = async () => {
 		const keypair = Keypair.random();
 		
-		return fetch(`${config.angelbot_url}/account/${keypair.publicKey()}`, {
+		return fetch(`${config.angelbot_url}/account/${keypair.publicKey()}?balance=100000000`, {
       method: 'GET',
       timeout: 3000,
       headers: {

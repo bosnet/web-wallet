@@ -39,39 +39,15 @@ class AmountInput extends Component {
         }
     };
 
-    onKeyUp = ($event) => {
-        let value = $event.currentTarget.value;
-
-        if (value.length >= 2) {
-            const first = value.charAt(0);
-            const second = value.charAt(1);
-
-            if (first === '0' && second !== '.') {
-                value = value.substr(1);
-            }
-        }
-
-
-        if (!$event.currentTarget.validity.badInput) {
-            this.setState({
-                text: value
-            });
-            $event.currentTarget.value = value;
-        }
-        else {
-            $event.currentTarget.value = this.state.text;
-        }
-    };
-
 
     render() {
         return (
             <input {...this.props}
                 onKeyDown={this.onKeyDown}
-                onKeyUp={this.onKeyUp}
                 onBlur={this.onKeyUp}
                 type="number"
                 min="0.1"
+                step="0.1"
                 placeholder="0.1" />
         )
     }

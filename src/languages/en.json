@@ -22,7 +22,7 @@
 	},
 	"welcome_view": {
 		"title": "BOScoin wallet",
-		"title_description": "Create your Seed, Manage your Wallet, Send and receive BOScoins.",
+		"title_description": "Testnet Wallet is ONLY for ‘testing’.\nPlease do not transfer from the Tokennet to Testnet (BOScoin and Fees will disappear).\nPlease do not transfer from the Mainnet to Testnet.",
 		"button_make": "Key Generator",
 		"create_account": "Create new account on TestNet",
 		"button_open": "Open your wallet",

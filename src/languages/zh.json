@@ -22,7 +22,7 @@
 	},
 	"welcome_view": {
 		"title": "BOScoin wallet",
-		"title_description": "生成私钥, 管理你的钱包, 发送和接收BOScoin.",
+		"title_description": "Testnet Wallet is ONLY for ‘testing’.\nPlease do not transfer from the Tokennet to Testnet (BOScoin and Fees will disappear).\nPlease do not transfer from the Mainnet to Testnet.",
 		"button_make": "生成私钥",
 		"create_account": "在测试网络上创建账户",
 		"button_open": "打开你的钱包",

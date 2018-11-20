@@ -9,7 +9,6 @@ import makeTransaction from 'libs/newTransaction';
 import async from 'async';
 import AmountSpan from "components/AmountSpan";
 import ErrorPopup from "./ErrorPopup";
-import trimZero from "../utils/trimZero";
 import learnMoreIcon from 'assets/imgs/show-error-detail.png';
 import closeIcon from 'assets/imgs/hide-error-detail.png';
 import pageview from "utils/pageview";
@@ -30,7 +29,6 @@ class TransactionConfirm extends Component {
 		const queue = [];
 
     const paymentData = this.props.paymentData;
-    const account = this.props.account;
 
 		const sendPayment = callback => {
 			fetch(`${config.api_url}/accounts/${this.props.keypair.publicKey()}`, {

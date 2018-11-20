@@ -22,7 +22,7 @@
 	},
 	"welcome_view": {
 		"title": "BOScoin 웹지갑",
-		"title_description": "계정 및 지갑을 관리하고, BOScoin을 보내고 받으세요.",
+		"title_description": "테스트넷에선 오직 ‘테스트만’ 가능합니다.\n토큰넷에서 테스트넷으로 이체하지 말아주세요 (보스코인과 수수료를 잃어버릴 수 있습니다).\n메인넷에서 테스트넷으로 이체하지 말아주세요.",
 		"button_make": "지갑 주소 만들기",
 		"create_account": "Create new account on Testnet",
 		"button_open": "지갑 열기",

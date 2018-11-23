@@ -23,7 +23,7 @@ class Header extends Component {
 					<div className="col right">
 						<p className="see-the-full-manual">
 							<a href={ T.translate( 'header.pdf_path' ) } target="_blank">
-								<T.span text="header.see_manual"/>
+								<T.span text={T.translate('header.see_manual')}/>
 								<img className="download-icon" src={downloadIcon} style={this.downloadIconStyle}
 									 alt="User Guide"/>
 							</a>
@@ -43,6 +43,7 @@ class Header extends Component {
 }
 
 const mapStoreToProps = ( store ) => ({
+	language: store.language.language,
 	timer: store.timer,
 });
 

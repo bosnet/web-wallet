@@ -14,7 +14,8 @@ class LanguageSelector extends Component {
 			languageList: [
 				[ '한국어', 'ko' ],
 				[ 'English', 'en' ],
-				[ '中文', 'zh' ]
+				[ '中文', 'zh' ],
+				[ 'Русский', 'ru' ],
 			],
 			selectBoxOpen: false
 		};

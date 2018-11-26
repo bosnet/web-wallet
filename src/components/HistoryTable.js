@@ -30,7 +30,7 @@ class HistoryTable extends Component {
     }
 
     this.props.resetHistory();
-    fetch(`${config.api_url}/accounts/${keypair.publicKey()}/transactions?reverse=true`, {
+    fetch(`${config.api_url}/accounts/${keypair.publicKey()}/operations?reverse=true&limit=100`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -41,67 +41,30 @@ class HistoryTable extends Component {
       .then((data) => {
         let { records } = data._embedded;
         records = records.map(e => ({
-          created: e.created,
-          hash: e.hash,
-          fee: Number(Number(e.fee)/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+          created: e.confirmed,
+          hash: e.tx_hash,
+					fee: 0.001,
+					target: e.target,
+					source: e.source,
+					type: e.type,
+					amount: Number(e.body.amount/1000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
         }))
 
         this.props.streamPayment(records);
 
       })
       .then(() => {
-        this.buildHistory();
+        this.setState({
+          isLoaded: true,
+          historyPage: this.state.historyPage,
+        })
       });
   }
   
-  buildHistory = () => {
-    let data = this.props.paymentHistory;
-    let length = data.length;
-    const promises = [];
-    
-		if ( (this.state.historyPage + 1) * this.RENDER_ITEM_PER < length ) {
-			length = (this.state.historyPage + 1) * this.RENDER_ITEM_PER;
-    }
-    
-    for ( let i = 0; i < length; i++ ) {
-      const payment = data[ i ];
-      // Not Loaded/api/v1/transactions/{hash}
-      if(!payment.type) {
-        promises.push(
-          fetch(`${config.api_url}/transactions/${payment.hash}/operations`, {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-          })
-          
-            .then(response => response.json())
-            .then((data) => {
-              const operation = data._embedded.records[0];
-              operation.body.amount = Number(Number(operation.body.amount)/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
-
-              this.props.streamOperations(i, operation)
-              
-            })
-        )
-      }
-    }
-
-    Promise.all(promises)
-      .then(() => {
-        
-        this.setState({
-          isLoaded: true,
-          historyPage: this.state.historyPage + 1
-        })
-      })
-
-  }
-  
-
 	readMore = () => {
-    this.buildHistory();
+		this.setState({
+			historyPage: this.state.historyPage + 1
+		})
 	};
 
 	shortAddress( $address, $length = 6 ) {
@@ -131,8 +94,8 @@ class HistoryTable extends Component {
 					const funder = payment.source;
 					if ( funder === me ) {
 						label = 'wallet_view.sent';
-						target = payment.body.target;
-						amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						target = payment.target;
+						amount = Number(Number(payment.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 					else {
 						label = 'wallet_view.created_account';
@@ -142,7 +105,7 @@ class HistoryTable extends Component {
 						else {
 							target = '-';
 						}
-						amount = Number(payment.body.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						amount = Number(payment.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 				
 					break;
@@ -150,13 +113,13 @@ class HistoryTable extends Component {
 					const from = payment.source;
 					if ( me === from ) {
 						label = 'wallet_view.sent';
-						target = payment.body.target;
-						amount = Number(Number(payment.body.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						target = payment.target;
+						amount = Number(Number(payment.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 					else {
 						label = 'wallet_view.received';
 						target = payment.source;
-						amount = Number(payment.body.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						amount = Number(payment.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 					}
 				
 					break;

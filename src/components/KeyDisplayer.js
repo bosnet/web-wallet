@@ -29,20 +29,6 @@ class KeyDisplayer extends Component {
 							<BlueButton tiny filled><T.span text="common.copy"/></BlueButton>
 						</div>
 					</div>
-					<div className="key-box h-group">
-						<hr/>
-
-						<div className="label col">
-							{T.translate( 'common.secret_seed' )}
-						</div>
-						<div className="key col">
-							{keypair ? keypair.secret() : ''}
-						</div>
-						<div className="copy-button col"
-							 data-clipboard-text={keypair ? keypair.secret() : ''}>
-							<BlueButton tiny filled><T.span text="common.copy"/></BlueButton>
-						</div>
-					</div>
 					{ this.props.setOpenSecretKey &&
 					<div className="key-box h-group">
 						<hr/>

@@ -21,8 +21,9 @@
 		"pdf_path": "https://boscoin.io/docs/wallet-guide-kor.pdf"
 	},
 	"welcome_view": {
-		"title": "BOScoin 웹지갑",
-		"title_description": "테스트넷에선 오직 ‘테스트만’ 가능합니다.\n토큰넷에서 테스트넷으로 이체하지 말아주세요 (보스코인과 수수료를 잃어버릴 수 있습니다).\n메인넷에서 테스트넷으로 이체하지 말아주세요.",
+    "title": "BOScoin 웹지갑",
+    "title_description": "보스코인 자체 독립적인 생태계를 이끌어갈 Mainnet 기반의 Wallet인 BOScoin Wallet입니다.\n · 계좌 생성, 계좌 열기 및 송금, 메인넷에서의 거래 내역 조회가 가능합니다.\n· 토큰넷 네트워크에 있던 모든 코인은 자동으로 메인넷으로 전환되므로, 이전과 동일하게 사용하시면 됩니다.\n· 토큰넷에서 거래했던 과거 거래내역 조회는 토큰넷 월렛 (https://wallet-tokennet.boscoin.io)에서 가능합니다.\n· 테스트넷에서는 오직 ’테스트’만 가능합니다. 메인넷에서 테스트넷으로 이체하지 말아주세요",
+		"title_description_test": "테스트넷에선 오직 ‘테스트만’ 가능합니다.\n토큰넷에서 테스트넷으로 이체하지 말아주세요 (보스코인과 수수료를 잃어버릴 수 있습니다).\n메인넷에서 테스트넷으로 이체하지 말아주세요.",
 		"button_make": "지갑 주소 만들기",
 		"create_account": "Create new account on Testnet",
 		"button_open": "지갑 열기",

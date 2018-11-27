@@ -85,7 +85,11 @@
 		@include response(md) {
 			font-size: 2rem;
 		}
-	}
+  }
+  
+  .ht_test {
+    text-align: left;
+  }
 
 	.maintenance {
 		.label {

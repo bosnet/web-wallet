@@ -1,6 +1,7 @@
 {
 	"test_mode": true,
 	"api_url": "https://testnet-sebak.blockchainos.org",
+	"main_url": "https://mainnet.blockchainos.org",
 	"angelbot_url": "https://testnet-angelbot.blockchainos.org",
 	"passphrases": "Test BOS Token Network ; tokennet.test; September 2017",
 	"transaction_fee": 0.001,
@@ -10,5 +11,6 @@
 	"active_make_a_new_key": true,
 	"active_create_test_account": true,
   "ga_id": "UA-108856157-1",
-  "network_id": "sebak-test-network"
+	"network_id": "sebak-test-network",
+	"main_network_id": "sebak-network; 2018-11-26"
 }

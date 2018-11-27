@@ -13,8 +13,14 @@ class MyBalance extends Component {
     if( !keypair) {
       return;
     }
-    
-    fetch(`${config.api_url}/api/v1/accounts/${keypair.publicKey()}`, {
+		
+		let url = config.api_url;
+
+		if (!config.test_mode) {
+			url = config.main_url;
+		}
+		
+    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {

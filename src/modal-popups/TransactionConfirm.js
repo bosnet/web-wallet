@@ -31,7 +31,14 @@ class TransactionConfirm extends Component {
     const paymentData = this.props.paymentData;
 
 		const sendPayment = callback => {
-			fetch(`${config.api_url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
+			let url = config.api_url;
+
+			if (!config.test_mode) {
+				url = config.main_url;
+			}
+	
+
+			fetch(`${url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -62,23 +69,16 @@ class TransactionConfirm extends Component {
 					})
 				
 			})
-
-      // StellarOperations.sendPayment( this.props.paymentData )( this.props.keypair )
-			// 	.then( () => {
-			// 		callback( null, false );
-			// 	} )
-			// 	.catch( ( $error ) => {
-			// 		const noDestination = find( $error.extras.result_codes.operations, $item => $item === 'op_no_destination' );
-			// 		if ( noDestination ) {
-			// 			callback( null, $error );
-			// 			return;
-			// 		}
-			// 		callback( $error );
-			// 	} );
 		};
 
 		const createAccount = callback => {
-			fetch(`${config.api_url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
+			let url = config.api_url;
+
+			if (!config.test_mode) {
+				url = config.main_url;
+			}
+
+			fetch(`${url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -125,7 +125,13 @@ class TransactionConfirm extends Component {
 		};
 
 		const checkAddressExist = () => {
-        fetch(`${config.api_url}/api/v1/accounts/${this.props.paymentData.destination}`, {
+				let url = config.api_url;
+
+				if (!config.test_mode) {
+					url = config.main_url;
+				}
+	
+        fetch(`${url}/api/v1/accounts/${this.props.paymentData.destination}`, {
           method: 'GET',
           timeout: 3000,
           headers: {

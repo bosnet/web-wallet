@@ -30,8 +30,15 @@ class HistoryTable extends Component {
       return;
     }
 
-    this.props.resetHistory();
-    fetch(`${config.api_url}/api/v1/accounts/${keypair.publicKey()}/operations?reverse=true&limit=10`, {
+		this.props.resetHistory();
+		
+		let url = config.api_url;
+
+		if (!config.test_mode) {
+			url = config.main_url;
+		}
+
+    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}/operations?reverse=true&limit=10`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -55,7 +62,7 @@ class HistoryTable extends Component {
 				return data._links.prev.href;
 			})
 			.then((prev) => {
-				return fetch(`${config.api_url}${prev}`, {
+				return fetch(`${url}${prev}`, {
 					method: 'GET',
 					headers: {
 						Accept: 'application/json',
@@ -95,7 +102,13 @@ class HistoryTable extends Component {
 	readMore = () => {
 		const prev = this.state.prev;
 
-		fetch(`${config.api_url}${prev}`, {
+		let url = config.api_url;
+
+		if (!config.test_mode) {
+			url = config.main_url;
+		}
+
+		fetch(`${url}${prev}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

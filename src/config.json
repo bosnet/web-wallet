@@ -1,6 +1,6 @@
 {
 	"test_mode": true,
-	"api_url": "https://testnet-sebak.blockchainos.org/api/v1",
+	"api_url": "https://testnet-sebak.blockchainos.org",
 	"angelbot_url": "https://testnet-angelbot.blockchainos.org",
 	"passphrases": "Test BOS Token Network ; tokennet.test; September 2017",
 	"transaction_fee": 0.001,

@@ -31,7 +31,7 @@ class TransactionConfirm extends Component {
     const paymentData = this.props.paymentData;
 
 		const sendPayment = callback => {
-			fetch(`${config.api_url}/accounts/${this.props.keypair.publicKey()}`, {
+			fetch(`${config.api_url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -78,7 +78,7 @@ class TransactionConfirm extends Component {
 		};
 
 		const createAccount = callback => {
-			fetch(`${config.api_url}/accounts/${this.props.keypair.publicKey()}`, {
+			fetch(`${config.api_url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -125,7 +125,7 @@ class TransactionConfirm extends Component {
 		};
 
 		const checkAddressExist = () => {
-        fetch(`${config.api_url}/accounts/${this.props.paymentData.destination}`, {
+        fetch(`${config.api_url}/api/v1/accounts/${this.props.paymentData.destination}`, {
           method: 'GET',
           timeout: 3000,
           headers: {

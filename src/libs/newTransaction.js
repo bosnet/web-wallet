@@ -73,7 +73,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   body.H.signature = sig;
 
 
-  return fetch(`${config.api_url}/transactions`, {
+  return fetch(`${config.api_url}/api/v1/transactions`, {
     method: 'POST',
     timeout: 3000,
     headers: {

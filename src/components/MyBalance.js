@@ -14,7 +14,7 @@ class MyBalance extends Component {
       return;
     }
     
-    fetch(`${config.api_url}/accounts/${keypair.publicKey()}`, {
+    fetch(`${config.api_url}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {

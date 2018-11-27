@@ -8,7 +8,7 @@ import * as actions from "actions/index";
 const config = require( 'config.json' );
 
 class HistoryTable extends Component {
-	RENDER_ITEM_PER = 5;
+	RENDER_ITEM_PER = 10;
 
 	constructor() {
 		super();
@@ -16,7 +16,8 @@ class HistoryTable extends Component {
 		const state = {
       historyPage: 0,
       history: [],
-      isLoaded: false,
+			isLoaded: false,
+			prev: null,
 		};
 
 		this.state = state;
@@ -30,7 +31,7 @@ class HistoryTable extends Component {
     }
 
     this.props.resetHistory();
-    fetch(`${config.api_url}/accounts/${keypair.publicKey()}/operations?reverse=true&limit=100`, {
+    fetch(`${config.api_url}/api/v1/accounts/${keypair.publicKey()}/operations?reverse=true&limit=10`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -51,8 +52,38 @@ class HistoryTable extends Component {
         }))
 
         this.props.streamPayment(records);
+				return data._links.prev.href;
+			})
+			.then((prev) => {
+				return fetch(`${config.api_url}${prev}`, {
+					method: 'GET',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+				})
+					.then(response => response.json())
+					.then((data) => {
+						let { records } = data._embedded;
+						if( records && records.length > 0) {
+							records = records.map(e => ({
+								created: e.confirmed,
+								hash: e.tx_hash,
+								fee: 0.001,
+								target: e.target,
+								source: e.source,
+								type: e.type,
+								amount: Number(e.body.amount/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+							}))		
 
-      })
+							this.props.streamOperations(records);
+						}
+
+						this.setState({
+							prev: data._links.prev.href,
+						});
+					})
+			})
       .then(() => {
         this.setState({
           isLoaded: true,
@@ -62,9 +93,37 @@ class HistoryTable extends Component {
   }
   
 	readMore = () => {
-		this.setState({
-			historyPage: this.state.historyPage + 1
+		const prev = this.state.prev;
+
+		fetch(`${config.api_url}${prev}`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
 		})
+			.then(response => response.json())
+			.then((data) => {
+				let { records } = data._embedded;
+				if( records && records.length > 0) {
+					records = records.map(e => ({
+						created: e.confirmed,
+						hash: e.tx_hash,
+						fee: 0.001,
+						target: e.target,
+						source: e.source,
+						type: e.type,
+						amount: Number(e.body.amount/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+					}))
+	
+					this.props.streamOperations(records);
+				}
+
+				this.setState({
+					prev: data._links.prev.href,
+					historyPage: this.state.historyPage + 1
+				});
+			})
 	};
 
 	shortAddress( $address, $length = 6 ) {
@@ -173,8 +232,8 @@ const mapDispatchToStore = ( dispatch ) => ( {
   streamPayment: ( $payment ) => {
 		dispatch( actions.streamPayment( $payment ) );
 	},
-  streamOperations: ( $index, $operations ) => {
-    dispatch( actions.streamOperations( $index, $operations ) );
+  streamOperations: ( $operations ) => {
+    dispatch( actions.streamOperations( $operations ) );
   },
   resetHistory: () => {
 		dispatch( actions.resetHistory() );

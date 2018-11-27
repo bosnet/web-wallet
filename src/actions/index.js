@@ -77,9 +77,8 @@ export const streamPayment = ( $payment ) => ( {
 	payment: $payment,
 } );
 
-export const streamOperations = ( $index, $operations ) => ( {
+export const streamOperations = ( $operations ) => ( {
   type: types.STREAM_OPERATIONS,
-  index: $index,
 	operations: $operations,
 } );
 

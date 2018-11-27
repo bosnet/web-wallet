@@ -47,6 +47,7 @@ class HistoryTable extends Component {
     })
       .then(response => response.json())
       .then((data) => {
+				console.log(data);
         let { records } = data._embedded;
         records = records.map(e => ({
           created: e.confirmed,
@@ -71,6 +72,7 @@ class HistoryTable extends Component {
 				})
 					.then(response => response.json())
 					.then((data) => {
+						console.log(data);
 						let { records } = data._embedded;
 						if( records && records.length > 0) {
 							records = records.map(e => ({
@@ -84,11 +86,16 @@ class HistoryTable extends Component {
 							}))		
 
 							this.props.streamOperations(records);
-						}
 
-						this.setState({
-							prev: data._links.prev.href,
-						});
+							this.setState({
+								prev: data._links.prev.href,
+							});
+						} else {
+							this.setState({
+								prev: null,
+							});
+	
+						}
 					})
 			})
       .then(() => {

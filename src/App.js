@@ -73,10 +73,11 @@ class App extends Component {
 		T.setTexts( require( './languages/' + lang + '.json' ) );
 	}
 
+
 	checkKillSwitch = () => {
 		const queue = [];
 		queue.push( callback => {
-			axios.get( config.ks_url + '?' + Math.random() )
+			axios.get( config.ks_url + '?' + Math.random())
 				.then( response => {
 					if ( response.data !== undefined ) {
 						callback( null, response.data );
@@ -97,14 +98,16 @@ class App extends Component {
 				return;
 			}
 			const now = moment();
-			const start = killSwitch.start_time;
-			const end = killSwitch.end_time;
+			const start = new Date(killSwitch.start_time);
+			const end = new Date(killSwitch.end_time);
+			console.log(end);
 			const result = {
 				start_time: start,
 				end_time: end,
 				onMaintenance: false,
 				message: null,
 			};
+
 
 			if ( 0 <= now.diff( start ) && now.diff( end ) < 0 ) {
 				result.onMaintenance = true;

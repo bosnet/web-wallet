@@ -65,9 +65,11 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   };
 
 
+  const nid = config.test_mode ? config.network_id : config.main_network_id;
+
   const RDPData = makeRLPData(HType, body.B);
   const hash = sebakjs.hash(RDPData);
-  const sig = sebakjs.sign(hash, config.network_id, keypair.secret());
+  const sig = sebakjs.sign(hash, nid, keypair.secret());
 
   body.H.hash = hash;
   body.H.signature = sig;

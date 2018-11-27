@@ -100,7 +100,6 @@ class App extends Component {
 			const now = moment();
 			const start = new Date(killSwitch.start_time);
 			const end = new Date(killSwitch.end_time);
-			console.log(end);
 			const result = {
 				start_time: start,
 				end_time: end,

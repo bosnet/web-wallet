@@ -47,7 +47,6 @@ class HistoryTable extends Component {
     })
       .then(response => response.json())
       .then((data) => {
-				console.log(data);
         let { records } = data._embedded;
         records = records.map(e => ({
           created: e.confirmed,
@@ -72,7 +71,6 @@ class HistoryTable extends Component {
 				})
 					.then(response => response.json())
 					.then((data) => {
-						console.log(data);
 						let { records } = data._embedded;
 						if( records && records.length > 0) {
 							records = records.map(e => ({

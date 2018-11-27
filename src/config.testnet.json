@@ -6,7 +6,7 @@
 	"passphrases": "Test BOS Token Network ; tokennet.test; September 2017",
 	"transaction_fee": 0.001,
 	"minimum_balance": 0.1,
-	"ks_url": "http://testnet-congress-voting-result.blockchainos.org/sebak/ks.json",
+	"ks_url": "https://s3-ap-northeast-1.amazonaws.com/testnet-congress-voting-result.blockchainos.org/sebak/ks.json",
 	"ks_interval": 5,
 	"active_make_a_new_key": true,
 	"active_create_test_account": true,

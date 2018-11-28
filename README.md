@@ -17,7 +17,8 @@ $ yarn start # or npm run start
 You can change `src/config.json`.
 
 - `test_mode`: If you set `true`, change background and main page view.
-- `api_url`: Horizon API URL
+- `api_url`: TESTNET API URL
+-	`main_url`: MAINNET API URL
 - `passphrases`: Horizon API Pass Phrases
 - `transaction_fee`: Transaction Fee
 - `minimum_balance`: Minimum Balance
@@ -40,7 +41,9 @@ You can change `src/config.json`.
 ## Build
 
 ```sh
-$ yarn build
+$ sh ./build.sh testnet
+#or
+$ sh ./build.sh mainnet
 ```
 
 

@@ -211,11 +211,11 @@ class HistoryTable extends Component {
 					}
 				
           break;
-        case 'unfreezing-request' :
+        case 'unfreezing-request' : // 표시 안함
           const source = payment.source;
-          label = 'wallet_view.received';
-          target = source;
-          amount = new BigNumber(payment.amount).toString();
+          label = '';
+          // target = source;
+          // amount = new BigNumber(payment.amount).toString();
           break;
 				default :
 					break;

@@ -8,6 +8,7 @@ import T from 'i18n-react';
 import AmountSpan from "components/AmountSpan";
 import trimZero from "../utils/trimZero";
 import pageview from "utils/pageview";
+import BigNumber from "bignumber.js";
 
 class TransactionComplete extends Component {
 	closeTransactionComplete = () => {
@@ -30,7 +31,7 @@ class TransactionComplete extends Component {
 						{T.translate( 'common.total_amount' )}
 					</p>
 					<p className="transaction-amount">
-						<AmountSpan value={  Number(amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '')  }/> BOS
+						<AmountSpan value={  new BigNumber(amount).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '')  }/> BOS
 					</p>
 					<p className="button-wrapper">
 						<BlueButton medium

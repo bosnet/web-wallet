@@ -12,6 +12,7 @@ import ErrorPopup from "./ErrorPopup";
 import learnMoreIcon from 'assets/imgs/show-error-detail.png';
 import closeIcon from 'assets/imgs/hide-error-detail.png';
 import pageview from "utils/pageview";
+import BigNumber from "bignumber.js";
 
 const config = require( 'config.json' );
 
@@ -50,7 +51,7 @@ class TransactionConfirm extends Component {
 				return res.json()
 			})
 			.then(account => {
-				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				account.balance = new BigNumber(account.balance).div(10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 				this.props.streamAccount(account);
 			})
 			.then(() => {
@@ -90,7 +91,7 @@ class TransactionConfirm extends Component {
 				return res.json()
 			})
 			.then(account => {
-				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				account.balance = new BigNumber(account.balance).div(10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 				this.props.streamAccount(account);
 			})
 			.then(() => {
@@ -234,7 +235,7 @@ class TransactionConfirm extends Component {
 							<tr>
 								<td>{T.translate( "common.amount" )}</td>
 								<td>
-									<AmountSpan value={ Number(amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
+									<AmountSpan value={ new BigNumber(amount).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
 								</td>
 							</tr>
 							<tr>
@@ -248,7 +249,7 @@ class TransactionConfirm extends Component {
 									{T.translate( "common.total_amount" )}
 								</td>
 								<td>
-									<AmountSpan value={ Number(total).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
+									<AmountSpan value={ new BigNumber(total).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/> BOS
 								</td>
 							</tr>
 							</tbody>

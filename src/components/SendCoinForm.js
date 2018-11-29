@@ -9,6 +9,7 @@ import { StellarTools } from 'libs/stellar-toolkit';
 import TextAlert from "./TextAlert";
 import AmountInput from "./AmountInput";
 import Decimal from 'decimal.js';
+import BigNumber from "bignumber.js";
 
 const config = require( 'config.json' );
 
@@ -47,9 +48,11 @@ class SendCoinForm extends Component {
 	};
 
 	onChange = () => {
-		const input = document.querySelector( '.input-sending-amount' );
-		const sendingAmount = Number( input.value );
-		const transactionTotal = new Decimal( sendingAmount ).plus( this.state.transactionFee ).toNumber();
+    const input = document.querySelector( '.input-sending-amount' );
+    let value = input.value ? input.value : 0;
+
+		const sendingAmount = new BigNumber( value );
+		const transactionTotal = sendingAmount.plus( this.state.transactionFee ).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 		this.setState( {
 			sendingAmount,
 			transactionTotal,
@@ -79,7 +82,7 @@ class SendCoinForm extends Component {
 			this.setState( { error: "send_coin.error.transaction_amount_null" } );
 			return false;
 		}
-		const balance = Number( this.props.account.balance );
+		const balance = new BigNumber( this.props.account.balance ).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
 		if ( this.state.transactionTotal > balance ) {
 			this.setState( { error: "send_coin.error.not_enough_balance" } );
 			return false;
@@ -102,9 +105,9 @@ class SendCoinForm extends Component {
 		paymentData.memo = { type: 'none' };
 		paymentData.asset = { code: 'XLM', uuid: 'native', shortName: 'XLM', asset_type: 'native' };
 		paymentData.destination = this.state.publicKey;
-		paymentData.amount = this.state.sendingAmount.toString();
+		paymentData.amount = new BigNumber(this.state.sendingAmount).toString();
 		paymentData.transactionFee = this.state.transactionFee;
-		paymentData.transactionTotal = new Decimal( this.state.sendingAmount ).plus( this.state.transactionFee );
+		paymentData.transactionTotal = new BigNumber( this.state.sendingAmount ).plus( this.state.transactionFee );
 
 		this.props.showTransactionConfirm( true, paymentData );
 
@@ -172,7 +175,7 @@ class SendCoinForm extends Component {
 									 onChange={ this.onChange }
 						/>
 						<p className="sending-amount">
-							{T.translate( 'send_coin.total_will_be_sent', { amount: Number( this.state.transactionTotal ).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '') } )}
+							{T.translate( 'send_coin.total_will_be_sent', { amount: this.state.transactionTotal } )}
 						</p>
 					</div>
 				</div>

@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import moment from 'moment';
 import AmountSpan from "./AmountSpan";
 import * as actions from "actions/index";
+import BigNumber from "bignumber.js";
+
 const config = require( 'config.json' );
 
 class HistoryTable extends Component {
@@ -53,9 +55,10 @@ class HistoryTable extends Component {
           hash: e.tx_hash,
 					fee: 0.001,
 					target: e.target,
-					source: e.source,
+          source: e.source,
+          linked: e.body.linked,
 					type: e.type,
-					amount: Number(e.body.amount/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+					amount: new BigNumber(e.body.amount).div(10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
         }))
 
         this.props.streamPayment(records);
@@ -78,9 +81,10 @@ class HistoryTable extends Component {
 								hash: e.tx_hash,
 								fee: 0.001,
 								target: e.target,
-								source: e.source,
+                source: e.source,
+                linked: e.body.linked,
 								type: e.type,
-								amount: Number(e.body.amount/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+								amount: new BigNumber(e.body.amount).div(10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
 							}))		
 
 							this.props.streamOperations(records);
@@ -129,9 +133,10 @@ class HistoryTable extends Component {
 						hash: e.tx_hash,
 						fee: 0.001,
 						target: e.target,
-						source: e.source,
+            source: e.source,
+            linked: e.body.linked,
 						type: e.type,
-						amount: Number(e.body.amount/10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+						amount: new BigNumber(e.body.amount).div(10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
 					}))
 	
 					this.props.streamOperations(records);
@@ -171,8 +176,14 @@ class HistoryTable extends Component {
 					const funder = payment.source;
 					if ( funder === me ) {
 						label = 'wallet_view.sent';
-						target = payment.target;
-						amount = Number(Number(payment.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+            target = payment.target;
+            
+            if (payment.linked === funder) {
+              amount = new BigNumber(payment.amount).toString();
+            } else {
+              amount = new BigNumber(payment.amount).plus(payment.fee).toString();
+            }
+					
 					}
 					else {
 						label = 'wallet_view.created_account';
@@ -182,7 +193,7 @@ class HistoryTable extends Component {
 						else {
 							target = '-';
 						}
-						amount = Number(payment.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						amount = payment.amount;
 					}
 				
 					break;
@@ -191,15 +202,21 @@ class HistoryTable extends Component {
 					if ( me === from ) {
 						label = 'wallet_view.sent';
 						target = payment.target;
-						amount = Number(Number(payment.amount) + Number(payment.fee)).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						amount = new BigNumber(payment.amount).plus(payment.fee).toString();
 					}
 					else {
 						label = 'wallet_view.received';
 						target = payment.source;
-						amount = Number(payment.amount).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+						amount = payment.amount;
 					}
 				
-					break;
+          break;
+        case 'unfreezing-request' :
+          const source = payment.source;
+          label = 'wallet_view.received';
+          target = source;
+          amount = new BigNumber(payment.amount).toString();
+          break;
 				default :
 					break;
       }

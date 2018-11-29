@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 import { Keypair } from 'libs/stellar-sdk';
 import T from 'i18n-react';
 import moment from 'moment';
-
+import BigNumber from "bignumber.js";
 import pageview from 'utils/pageview';
 
 const config = require( 'config.json' );
@@ -58,7 +58,7 @@ class MainPageView extends Component {
     })
     .then(account => {
 			if(!account.status) {
-				account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+				account.balance = new BigNumber(account.balance).div(10000000).toString();
 				this.props.streamAccount(account);
 
 				return keypair;

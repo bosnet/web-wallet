@@ -9,6 +9,8 @@ import T from 'i18n-react';
 import StreamManager from "../StreamManager";
 import pageview from 'utils/pageview';
 import store from '../observables/store';
+import BigNumber from "bignumber.js";
+
 const config = require( 'config.json' );
 
 class LoginView extends Component {
@@ -77,7 +79,7 @@ class LoginView extends Component {
             return;
           }
     
-          account.balance = Number(account.balance / 10000000).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+          account.balance = new BigNumber(account.balance).div(10000000).toString();
           this.props.streamAccount(account);
           this.props.updateKeypair(keypair);
           store.keypair = keypair;
@@ -104,7 +106,7 @@ class LoginView extends Component {
           return;
         }
   
-        account.balance = account.balance / 10000000;
+        account.balance = new BigNumber(account.balance).div(10000000).toString();
         this.props.streamAccount(account);
         this.props.updateKeypair(keypair);
         store.keypair = keypair;

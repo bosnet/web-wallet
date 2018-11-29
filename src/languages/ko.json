@@ -115,5 +115,9 @@
 		"main_message": "일시적인 오류가 발생했습니다. 다시 시도해 주세요.",
 		"learn_more": "자세히 보기",
 		"close": "닫기"
+	},
+	"maintenance": {
+		"start_time": "시작 시간",
+		"end_time": "종료 시간 "
 	}
 }

@@ -91,9 +91,9 @@ class MainPageView extends Component {
 								{ this.props.maintenance.onMaintenance &&
 								<div className="maintenance">
 									<div className="text-center">
-										<div className="label">START TIME</div>
+										<T.p className={'label'} text="maintenance.start_time"/>
 										<div className="time">{ moment( this.props.maintenance.start_time ).format( 'YYYY-MM-DD HH:mm:ss') }</div>
-										<div className="label">END TIME</div>
+										<T.p className={'label'} text="maintenance.end_time"/>
 										<div className="time">{ moment( this.props.maintenance.end_time ).format( 'YYYY-MM-DD HH:mm:ss') }</div>
 									</div>
 

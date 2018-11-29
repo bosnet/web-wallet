@@ -17,13 +17,12 @@
 		"transaction_fee": "Плата за транзакцию"
 	},
 	"header": {
-		"see_manual": "Инструкция по использованию",
+		"see_manual": "Руководство пользователя",
 		"pdf_path": "https://boscoin.io/docs/wallet-guide-eng.pdf"
 	},
 	"welcome_view": {
-		"title": "",
-    "title_description": "The BOScoin Wallet is an exclusive Mainnet-based wallet.\n · You can create a new account, open your account, transfer BOScoin and see\nthe details of your account’s Mainnet deposit and withdrawal history.\n · We will transfer the BOScoin from Tokennet to Mainnet safely, you can use\nthe wallet the same as before.\n · You can view past Tokennet transactions in the Tokennet Wallet\n(https://wallet-tokennet.boscoin.io).\n · The Testnet Wallet is ONLY for ‘testing’. Do not transfer from Mainnet to Testnet\n\n",
-    "title_description_test": "Создайте свой секретный ключ, Управляйте своим кошельком, Отправляйте и получайте БОСкоины.",
+		"title": "БОСкоин кошелек",
+		"title_description": "Создайте свой секретный ключ, Управляйте своим кошельком, Отправляйте и получайте БОСкоины.",
 		"button_make": "Генератор ключей",
 		"create_account": "Создать новый аккаунт на TestNet",
 		"button_open": "Открыть кошелек",
@@ -43,7 +42,7 @@
 		"error": {
 			"fail_create_account": "Не удалось создать аккаунт."
 		},
-		"test_mode": "This is a <strong>TEST Web-wallet!</strong>"
+		"test_mode": "This is a<br><strong>TEST Web-wallet!</strong>"
 	},
 	"login_view": {
 		"header": "Введите свой ключ",
@@ -57,7 +56,7 @@
 		"input_recipient_address": "Введите публичный адрес получателя",
 		"input_amount": "Введите сумму для отправки",
 		"transaction_fee": "Плата за транзакцию",
-		"total_will_be_sent": "Общая сумма БОС будет отправлена получателю",
+		"total_will_be_sent": "Общая сумма БОС, будет отправлена получателю",
 		"error": {
 			"public_address_null": "Введите публичный адрес получателя",
 			"transaction_amount_null": "Введите сумму транзакции",
@@ -71,23 +70,23 @@
 	"key_generator": {
 		"header": "Нажмите на генератор новых ключей",
 		"description_line1": "Этот инструмент не создает аккаунт.",
-		"description_line2": "Вам необходимо отправить команду создать аккаунт на следующий",
-		"description_line3": "адрес с начальным балансом, чтобы он мог существовать ",
+		"description_line2": "Для создания вашего аккаунта необходим минимальный баланс.",
+		"description_line3": "Для активации аккаунта отправьте на следующий публичный адрес 0.1 БОС.",
 		"description_line4": "Держите ваш секретный ключ в безопасности",
 		"warn_line1": "Скопируйте публичный адрес и секретный ключ в безопасное место.",
-		"warn_line2": "Убедитесь что вы не потеряете свой секретный ключ и его не узнают посторонние лица.",
-		"warn_line3": "Вы можете потерять все монеты!"
+		"warn_line2": "Убедитесь в безопасности своего секретного ключа и не показывайте его посторонним лицам.",
+		"warn_line3": "Вы рискуете потерять все монеты!"
 	},
 	"record_seed": {
 		"warn_header1": "Запишите свои ключи",
 		"warn_header2_1": "Запишите свои ключи",
 		"warn_header2_2": " Сейчас!",
-		"warn_header3": "НЕ ТЕРЯЙТЕ СВОИ КЛЮЧИ",
-		"warn_text1_1": "Удостоверьтесь в безопасном хранении публичного адреса и секретного ключа",
-		"warn_text1_2": "Не теряйте и не делитесь своим секретным ключом. Это ключ к вашему кошельку.",
+		"warn_header3": "БЕРЕГИТЕ СВОИ КЛЮЧИ",
+		"warn_text1_1": "Убедитесь в сохранности публичного адреса и секретного ключа",
+		"warn_text1_2": "Берегите свой секретный ключ и не делитесь своим им ни с кем. Это ключ к вашему кошельку.",
 		"warn_text2_1": "Проверьте правильность ключей.",
 		"warn_text2_2": "Только Вы ответственны за безопасность ваших ключей.",
-		"warn_text3_1": "Проверьте свои ключи еще раз. Вы можете потерять все свои средства!",
+		"warn_text3_1": "Проверьте свои ключи еще раз. Вы рискуете потерять все свои средства,",
 		"warn_text3_2": "если вы потеряете свой секретный ключ.",
 		"warn_text3_3": " Последнее предупреждение!",
 		"yes": "Да"
@@ -115,5 +114,9 @@
 		"main_message": "Возникла временная ошибка. Повторите еще раз.",
 		"learn_more": "Подробнее",
 		"close": "Закрыть"
+	},
+	"maintenance": {
+		"start_time": "Начало",
+		"end_time": "Конец"
 	}
 }

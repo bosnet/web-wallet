@@ -115,5 +115,9 @@
 		"main_message": "发生临时错误. 请再试一下.",
 		"learn_more": "了解更多",
 		"close": "关闭"
+	},
+	"maintenance": {
+		"start_time": "开始于",
+		"end_time": "预计结束于"
 	}
 }

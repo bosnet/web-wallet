@@ -7,11 +7,13 @@
 	color: #ffffff;
 
 	.main-logo {
-		width: 120px;
-		margin-bottom: 19px;
+		min-width: 60px;
+		max-width: 450px;
 
 		@include response(md) {
-			width: auto;
+			width: 'auto';
+			min-width: 60px;
+			max-width: 450px;
 		}
 	}
 

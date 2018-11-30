@@ -226,7 +226,7 @@ class HistoryTable extends Component {
 					<div className="col label"><T.span text={label}/></div>
 					<div className="col target">{target}</div>
 					<div className="col amount">
-						<AmountSpan value={amount}/>
+						<AmountSpan value={new BigNumber(amount).toFormat(7)}/>
 					</div>
 					<div className="col date">{date}</div>
 				</div>;

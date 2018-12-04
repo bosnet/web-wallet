@@ -17,7 +17,7 @@
 		"transaction_fee": "手续费"
 	},
 	"header": {
-		"see_manual": "请参阅完整手册",
+		"see_manual": "User Guide",
 		"pdf_path": "https://boscoin.io/docs/wallet-guide-eng.pdf"
 	},
 	"welcome_view": {

@@ -17,7 +17,7 @@
 		"transaction_fee": "Плата за транзакцию"
 	},
 	"header": {
-		"see_manual": "Руководство пользователя",
+		"see_manual": "User Guide",
 		"pdf_path": "https://boscoin.io/docs/wallet-guide-eng.pdf"
 	},
 	"welcome_view": {

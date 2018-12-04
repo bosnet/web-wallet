@@ -52,7 +52,7 @@ class SendCoinForm extends Component {
     let value = input.value ? input.value : 0;
 
 		const sendingAmount = new BigNumber( value );
-		const transactionTotal = sendingAmount.plus( this.state.transactionFee ).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
+		const transactionTotal = sendingAmount.plus( this.state.transactionFee ).toString();
 		this.setState( {
 			sendingAmount,
 			transactionTotal,
@@ -83,7 +83,8 @@ class SendCoinForm extends Component {
 			return false;
 		}
 		const balance = new BigNumber( this.props.account.balance ).toFixed(7).replace(/[0]+$/, '').replace(/[.]+$/, '');
-		if ( this.state.transactionTotal > balance ) {
+
+		if ( new BigNumber(this.state.transactionTotal).gt(balance) ) {
 			this.setState( { error: "send_coin.error.not_enough_balance" } );
 			return false;
 		}
@@ -175,7 +176,7 @@ class SendCoinForm extends Component {
 									 onChange={ this.onChange }
 						/>
 						<p className="sending-amount">
-							{T.translate( 'send_coin.total_will_be_sent', { amount: this.state.transactionTotal } )}
+							{T.translate( 'send_coin.total_will_be_sent', { amount: new BigNumber(this.state.transactionTotal).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '') } )}
 						</p>
 					</div>
 				</div>

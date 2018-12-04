@@ -47,7 +47,7 @@ class MyBalance extends Component {
 		return (
 			<div className="balance-container">
 				<p id="balance">
-					<AmountSpan value={ new BigNumber(balance).toFormat(7) }/>
+					<AmountSpan value={ new BigNumber(balance).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '') }/>
 					{ ' ' }
 					<span className={ 'unit' }>BOS</span>
 				</p>

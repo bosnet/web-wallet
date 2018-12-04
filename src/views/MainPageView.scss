@@ -7,11 +7,14 @@
 	color: #ffffff;
 
 	.main-logo {
+		width: 100%;
+		margin: 0px;
 		min-width: 60px;
 		max-width: 450px;
 
 		@include response(md) {
-			width: 'auto';
+			width: 100%;
+			margin: 0px;
 			min-width: 60px;
 			max-width: 450px;
 		}
@@ -90,8 +93,13 @@
   }
   
   .ht_test {
+		word-break: break-all;
     text-align: left;
   }
+
+	.ht {
+		word-break: break-all;
+	}
 
 	.maintenance {
 		.label {

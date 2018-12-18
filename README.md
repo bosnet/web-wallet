@@ -41,9 +41,9 @@ You can change `src/config.json`.
 ## Build
 
 ```sh
-$ sh ./build.sh testnet
+$ ./build.sh testnet
 #or
-$ sh ./build.sh mainnet
+$ ./build.sh mainnet
 ```
 
 

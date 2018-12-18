@@ -367,7 +367,11 @@ module.exports = {
 		// https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 		// You can remove this if you don't use Moment.js:
 		new webpack.IgnorePlugin( /^\.\/locale$/, /moment$/ ),
-	
+		// set unit name for currency
+		new webpack.DefinePlugin({
+			'process.env.COIN_NAME': JSON.stringify(process.env.COIN_NAME) || JSON.stringify('BOScoin'),
+			'process.env.UNIT': JSON.stringify(process.env.UNIT) || JSON.stringify('BOS'),
+		}),
 	],
 	// Some libraries import Node modules but don't use them in the browser.
 	// Tell Webpack to provide empty mocks for them so importing them works.

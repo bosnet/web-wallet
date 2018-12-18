@@ -22,12 +22,12 @@
 	},
 	"welcome_view": {
 		"title": "",
-    "title_description": "基于主网(Mainnet)独家打造的BOScoin钱包。\n· 建立新账号，登入账号，交易BOScoin，查看交易内容与记录。\n· 我们已将您的BOScoin从Tokennet自动转移至Mainnet。钱包的使用方法与以往相同。\n· 您可以在Tokennet的钱包查询“Tokennet”的交易记录。（https://wallet-tokennet.boscoin.io）。\n· 测试网（Testnet）的钱包只适用于“测试“。请勿将BOScoin从主网（Mainnet）转发至测试网（Testnet）。\n\n",
-    "title_description_test": "测试网（Testnet）的钱包只适用于“测试“。\n请勿将BOScoin从主网（Mainnet）转发至测试网（Testnet）。",
+    "title_description": "基于主网(Mainnet)独家打造的{coin_name}钱包。\n· 建立新账号，登入账号，交易{coin_name}，查看交易内容与记录。\n· 我们已将您的{coin_name}从Tokennet自动转移至Mainnet。钱包的使用方法与以往相同。\n· 您可以在Tokennet的钱包查询“Tokennet”的交易记录。（https://wallet-tokennet.boscoin.io）。\n· 测试网（Testnet）的钱包只适用于“测试“。请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。\n\n",
+    "title_description_test": "测试网（Testnet）的钱包只适用于“测试“。\n请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。",
 		"button_make": "生成私钥",
 		"create_account": "在测试网络上创建账户",
 		"button_open": "打开你的钱包",
-		"guide_title": "如何让你的账户发送BOScoin",
+		"guide_title": "如何让你的账户发送{coin_name}",
 		"guide": {
 			"step1_1": "生成新的密钥，按 ",
 			"step1_2": " 按钮",
@@ -57,14 +57,14 @@
 		"input_recipient_address": "请输入收款人的公共地址",
 		"input_amount": "输入您想发送的数量",
 		"transaction_fee": "交易费",
-		"total_will_be_sent": "总共 {amount} BOS 将会发送给收款人",
+		"total_will_be_sent": "总共 {amount} {unit} 将会发送给收款人",
 		"error": {
 			"public_address_null": "输入收款人的公共地址",
 			"transaction_amount_null": "输入交易金额",
 			"transaction_amount_zero": "输入交易金额",
 			"not_enough_balance": "余额不足",
 			"incorrect_public_address": "公共地址不正确",
-			"minimum_balance": "转出后地址保证最少余额为 {minimum_balance} BOS.",
+			"minimum_balance": "转出后地址保证最少余额为 {minimum_balance} {unit}.",
 			"decimal_limit": "您只能输入到小数点后7位."
 		}
 	},
@@ -108,8 +108,8 @@
 		"history": "交易记录",
 		"open_secret_seed": "显示私钥",
 		"hide_secret_seed": "隐藏私钥",
-		"you_just_received": "您收到上次交易的 {amount} BOS ",
-		"you_just_sent": "您已发送最后一次交易的 {amount} BOS "
+		"you_just_received": "您收到上次交易的 {amount} {unit} ",
+		"you_just_sent": "您已发送最后一次交易的 {amount} {unit} "
 	},
 	"error_popup": {
 		"main_message": "发生临时错误. 请再试一下.",

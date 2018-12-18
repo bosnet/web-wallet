@@ -31,7 +31,7 @@ class RecentHistory extends Component {
 				}
 
 				DOM = <p data-lang={this.props.language} className="recent-history">
-					<T.span text={{ key: label, amount }}/>
+					<T.span text={{ key: label, amount, unit: process.env.UNIT }}/>
 				</p>;
 			}
 		}

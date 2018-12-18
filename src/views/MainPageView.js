@@ -114,7 +114,12 @@ class MainPageView extends Component {
 										<div className="test-mode" dangerouslySetInnerHTML={{ __html: T.translate( 'welcome_view.test_mode' ) }}/>
 										}
 
-										<T.p className={config.test_mode ? 'ht' : 'ht_test'} text={config.test_mode ? "welcome_view.title_description_test" : "welcome_view.title_description" }/>
+										<T.p
+											className={config.test_mode ? 'ht' : 'ht_test'}
+											text={{
+												key: config.test_mode ? "welcome_view.title_description_test" : "welcome_view.title_description",
+												coin_name: process.env.COIN_NAME,
+											}}/>
 
 										<div className={'button-group'}>
 											{config.active_make_a_new_key&&

@@ -22,12 +22,12 @@
 	},
 	"welcome_view": {
 		"title": "",
-    "title_description": "The BOScoin Wallet is an exclusive Mainnet-based wallet.\n · You can create a new account, open your account, transfer BOScoin and see\nthe details of your account’s Mainnet deposit and withdrawal history.\n · We completed the migration of BOScoins from Tokennet to Mainnet. You can use the wallet the same as before.\n · You can view past Tokennet transactions in the Tokennet Wallet\n(https://wallet-tokennet.boscoin.io).\n · The Testnet Wallet is ONLY for ‘testing’. Do not transfer from Mainnet to Testnet\n\n",
-  	"title_description_test": "Testnet Wallet is ONLY for ‘testing’.\nPlease do not transfer from the Tokennet to Testnet (BOScoin and Fees will disappear).\nPlease do not transfer from the Mainnet to Testnet.",
+    "title_description": "The {coin_name} Wallet is an exclusive Mainnet-based wallet.\n · You can create a new account, open your account, transfer {coin_name} and see\nthe details of your account’s Mainnet deposit and withdrawal history.\n · We completed the migration of {coin_name} from Tokennet to Mainnet. You can use the wallet the same as before.\n · You can view past Tokennet transactions in the Tokennet Wallet\n(https://wallet-tokennet.boscoin.io).\n · The Testnet Wallet is ONLY for ‘testing’. Do not transfer from Mainnet to Testnet\n\n",
+	"title_description_test": "Testnet Wallet is ONLY for ‘testing’.\nPlease do not transfer from the Tokennet to Testnet ({coin_name} and Fees will disappear).\nPlease do not transfer from the Mainnet to Testnet.",
 		"button_make": "Key Generator",
 		"create_account": "Create new account on TestNet",
 		"button_open": "Open your wallet",
-		"guide_title": "Step to make your account send BOScoin",
+		"guide_title": "Step to make your account send {coin_name}",
 		"guide": {
 			"step1_1": "Make new key by ",
 			"step1_2": " button above",
@@ -57,14 +57,14 @@
 		"input_recipient_address": "Input the Public Address of recipient",
 		"input_amount": "Input the amount you want to send",
 		"transaction_fee": "Transaction fee",
-		"total_will_be_sent": "A total of {amount} BOS will be sent to Recipient",
+		"total_will_be_sent": "A total of {amount} PESS will be sent to Recipient",
 		"error": {
 			"public_address_null": "Input Recipient's Public Address",
 			"transaction_amount_null": "Input Transaction Amount",
 			"transaction_amount_zero": "Input Transaction Amount",
 			"not_enough_balance": "Insufficient Balance",
 			"incorrect_public_address": "Incorrect Public Address",
-			"minimum_balance": "Minimum balance after transfer must be at least {minimum_balance} BOS.",
+			"minimum_balance": "Minimum balance after transfer must be at least {minimum_balance} {unit}.",
 			"decimal_limit": "You can only input to 7 decimal places."
 		}
 	},
@@ -108,8 +108,8 @@
 		"history": "History",
 		"open_secret_seed": "Show Secret Seed",
 		"hide_secret_seed": "Hide Secret Seed",
-		"you_just_received": "You have received {amount} BOS for your last transaction",
-		"you_just_sent": "You have sent {amount} BOS for your last transaction"
+		"you_just_received": "You have received {amount} {unit} for your last transaction",
+		"you_just_sent": "You have sent {amount} {unit} for your last transaction"
 	},
 	"error_popup": {
 		"main_message": "A temporary error has occurred. Please try again.",

@@ -9,7 +9,7 @@ class KeyGeneratorMessage extends Component {
 			<div>
 				{!this.props.simple &&
 				<div>
-					<img src={SymbolWhiteBack} alt="BOSCoin wallet symbol"/>
+					<img src={SymbolWhiteBack} alt={ `${process.env.COIN_NAME} wallet symbol` }/>
 				</div>
 				}
 

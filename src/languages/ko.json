@@ -22,12 +22,12 @@
 	},
 	"welcome_view": {
     "title": "",
-    "title_description": "보스코인 자체 독립적인 생태계를 이끌어갈 Mainnet 기반의 Wallet인 BOScoin Wallet입니다.\n· 계좌 생성, 계좌 열기 및 송금, 메인넷에서의 거래 내역 조회가 가능합니다.\n· 토큰넷 네트워크에 있던 모든 코인은 자동으로 메인넷으로 전환되어, 이전과 동일하게 \n사용하시면 됩니다.\n· 토큰넷에서 거래했던 과거 거래내역 조회는 토큰넷 월렛 (https://wallet-tokennet.boscoin.io)\n 에서 가능합니다.\n· 테스트넷에서는 오직 ’테스트’만 가능합니다. 메인넷에서 테스트넷으로 이체하지 말아주세요\n\n",
-		"title_description_test": "테스트넷에선 오직 ‘테스트만’ 가능합니다.\n토큰넷에서 테스트넷으로 이체하지 말아주세요 (보스코인과 수수료를 잃어버릴 수 있습니다).\n메인넷에서 테스트넷으로 이체하지 말아주세요.",
+    "title_description": "{coin_name} 자체 독립적인 생태계를 이끌어갈 Mainnet 기반의 Wallet인 {coin_name} Wallet입니다.\n· 계좌 생성, 계좌 열기 및 송금, 메인넷에서의 거래 내역 조회가 가능합니다.\n· 토큰넷 네트워크에 있던 모든 코인은 자동으로 메인넷으로 전환되어, 이전과 동일하게 \n사용하시면 됩니다.\n· 토큰넷에서 거래했던 과거 거래내역 조회는 토큰넷 월렛 (https://wallet-tokennet.boscoin.io)\n 에서 가능합니다.\n· 테스트넷에서는 오직 ’테스트’만 가능합니다. 메인넷에서 테스트넷으로 이체하지 말아주세요\n\n",
+		"title_description_test": "테스트넷에선 오직 ‘테스트만’ 가능합니다.\n토큰넷에서 테스트넷으로 이체하지 말아주세요 ({coin_name}과 수수료를 잃어버릴 수 있습니다).\n메인넷에서 테스트넷으로 이체하지 말아주세요.",
 		"button_make": "지갑 주소 만들기",
 		"create_account": "Create new account on Testnet",
 		"button_open": "지갑 열기",
-		"guide_title": "계정을 만들고 BOScoin을 보내는 법",
+		"guide_title": "계정을 만들고 {coin_name}을 보내는 법",
 		"guide": {
 			"step1_1": "위에 있는 ",
 			"step1_2": "버튼을 눌러서 공개 주소와 보안키를 만드세요.",
@@ -57,14 +57,14 @@
 		"input_recipient_address": "받는 사람의 공개 주소를 입력하세요",
 		"input_amount": "보내고자 하는 금액을 입력하세요",
 		"transaction_fee": "이체 수수료",
-		"total_will_be_sent": "총합 {amount} BOS를 보냅니다",
+		"total_will_be_sent": "총합 {amount} {unit}를 보냅니다",
 		"error": {
 			"public_address_null": "받는 사람의 공개 주소를 입력하세요",
 			"transaction_amount_null": "보내고자 하는 금액을 입력하세요",
 			"transaction_amount_zero": "보내고자 하는 금액을 입력하세요",
 			"not_enough_balance": "잔액이 부족하여 이체할 수 없습니다",
 			"incorrect_public_address": "받는 사람의 공개 주소가 정확하지 않습니다",
-			"minimum_balance": "전송 후 최소 잔액은 {minimum_balance} BOS 이상이어야 합니다.",
+			"minimum_balance": "전송 후 최소 잔액은 {minimum_balance} {unit} 이상이어야 합니다.",
 			"decimal_limit": "소수점 7자리까지만 입력 할 수 있습니다."
 		}
 	},
@@ -108,8 +108,8 @@
 		"history": "거래내역",
 		"open_secret_seed": "보안키 보기",
 		"hide_secret_seed": "보안키 숨기기",
-		"you_just_received": "최근 {amount} BOS를 받았습니다.",
-		"you_just_sent": "최근 {amount} BOS를 보냈습니다."
+		"you_just_received": "최근 {amount} {unit}를 받았습니다.",
+		"you_just_sent": "최근 {amount} {unit}를 보냈습니다."
 	},
 	"error_popup": {
 		"main_message": "일시적인 오류가 발생했습니다. 다시 시도해 주세요.",

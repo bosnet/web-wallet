@@ -31,7 +31,7 @@ class TransactionComplete extends Component {
 						{T.translate( 'common.total_amount' )}
 					</p>
 					<p className="transaction-amount">
-						<AmountSpan value={  new BigNumber(amount).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '')  }/> BOS
+						<AmountSpan value={  new BigNumber(amount).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '')  }/> { process.env.UNIT }
 					</p>
 					<p className="button-wrapper">
 						<BlueButton medium

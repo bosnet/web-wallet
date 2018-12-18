@@ -132,7 +132,7 @@ class SendCoinForm extends Component {
 
 	renderError = () => {
 		if ( this.state.error ) {
-			return <TextAlert>{T.translate( this.state.error, { minimum_balance: config.minimum_balance } )}</TextAlert>;
+			return <TextAlert>{T.translate( this.state.error, { minimum_balance: config.minimum_balance, unit: process.env.UNIT } )}</TextAlert>;
 		}
 		else {
 			return '';
@@ -150,7 +150,7 @@ class SendCoinForm extends Component {
 							{T.translate( 'send_coin.input_recipient_address' )}
 						</p>
 						<p className="transaction-fee">
-							{T.translate( 'send_coin.transaction_fee' )}: <span>{this.state.transactionFee} BOS</span>
+							{T.translate( 'send_coin.transaction_fee' )}: <span>{this.state.transactionFee} { process.env.UNIT }</span>
 						</p>
 
 						<p className="input-label gt-md">
@@ -176,7 +176,10 @@ class SendCoinForm extends Component {
 									 onChange={ this.onChange }
 						/>
 						<p className="sending-amount">
-							{T.translate( 'send_coin.total_will_be_sent', { amount: new BigNumber(this.state.transactionTotal).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, '') } )}
+							{T.translate( 'send_coin.total_will_be_sent', {
+								amount: new BigNumber(this.state.transactionTotal).toFormat(7).replace(/[0]+$/, '').replace(/[.]+$/, ''),
+								unit: process.env.UNIT
+							} )}
 						</p>
 					</div>
 				</div>

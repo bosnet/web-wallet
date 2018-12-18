@@ -183,7 +183,11 @@ class App extends Component {
 				<Route path="/receive" component={ReceiveCoinView}/>
 
 				<div className="copyright">
-					BlockchainOS Inc.
+					{process.env.UNIT === 'BOS' ? (
+						'BlockchainOS Inc.'
+					) : (
+						process.env.UNIT
+					)}
 				</div>
 			</div>
 		);

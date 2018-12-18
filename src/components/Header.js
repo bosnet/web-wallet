@@ -15,18 +15,23 @@ class Header extends Component {
 			<div className="header-container">
 				<div className="logo-container">
 					<Link to={'/'} onClick={ () => this.props.showTimer( false ) }>
-						<img className="logo-image" src={logo} alt="BOSCoin logo"/>
+						{process.env.UNIT === 'BOS' ? (
+							<img className="logo-image" src={logo} alt="BOSCoin logo"/>
+						) : (
+							process.env.UNIT
+						)}
 					</Link>
 				</div>
 
 				<div className="header-utils">
 					<div className="col right">
 						<p className="see-the-full-manual">
-							<a href={ T.translate( 'header.pdf_path' ) } target="_blank">
-								<T.span text={T.translate('header.see_manual')}/>
-								<img className="download-icon" src={downloadIcon} style={this.downloadIconStyle}
-									 alt="User Guide"/>
-							</a>
+							{process.env.UNIT === 'BOS' && (
+								<a href={ T.translate( 'header.pdf_path' ) } target="_blank">
+									<T.span text={T.translate('header.see_manual')}/>
+									<img className="download-icon" src={downloadIcon} style={this.downloadIconStyle} alt="User Guide"/>
+								</a>
+							)}
 						</p>
 						<LanguageSelector/>
 					</div>

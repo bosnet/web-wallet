@@ -106,7 +106,11 @@ class MainPageView extends Component {
 									<div>
 										{ !config.test_mode &&
 										<div>
-											<img className={'main-logo'} src={symbolImage} alt="BOSCoin symbol"/>
+											{process.env.UNIT === 'BOS' ? (
+												<img className={'main-logo'} src={symbolImage} alt="BOSCoin symbol"/>
+											) : (
+												<h1>{ process.env.COIN_NAME } Web Wallet</h1>
+											)}
 											<T.p className={'title'} text="welcome_view.title"/>
 										</div>
 										}
@@ -114,12 +118,14 @@ class MainPageView extends Component {
 										<div className="test-mode" dangerouslySetInnerHTML={{ __html: T.translate( 'welcome_view.test_mode' ) }}/>
 										}
 
-										<T.p
-											className={config.test_mode ? 'ht' : 'ht_test'}
-											text={{
-												key: config.test_mode ? "welcome_view.title_description_test" : "welcome_view.title_description",
-												coin_name: process.env.COIN_NAME,
-											}}/>
+										{process.env.UNIT === 'BOS' && (
+											<T.p
+												className={config.test_mode ? 'ht' : 'ht_test'}
+												text={{
+													key: config.test_mode ? "welcome_view.title_description_test" : "welcome_view.title_description",
+													coin_name: process.env.COIN_NAME,
+												}}/>
+										)}
 
 										<div className={'button-group'}>
 											{config.active_make_a_new_key&&

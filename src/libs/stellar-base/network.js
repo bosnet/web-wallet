@@ -1,7 +1,5 @@
 import { hash } from './hashing';
 
-const config = require( '../../config.json' );
-
 /**
  * Contains passphrases for common networks:
  * * `Networks.PUBLIC`: `Public Global Stellar Network ; September 2015`

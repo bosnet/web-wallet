@@ -42,11 +42,10 @@ You can set environment variables.
 ## Build
 
 ```sh
-$ ./build.sh testnet
+$ npm run build:testnet
 #or
-$ ./build.sh mainnet
+$ npm run build:mainnet
 ```
-
 
 ## Contribution
 

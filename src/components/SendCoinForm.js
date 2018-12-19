@@ -11,16 +11,14 @@ import AmountInput from "./AmountInput";
 import Decimal from 'decimal.js';
 import BigNumber from "bignumber.js";
 
-const config = require( 'config.json' );
-
 class SendCoinForm extends Component {
 	constructor() {
 		super();
 
 		const state = {
 			sendingAmount: null,
-			transactionFee: config.transaction_fee,
-			transactionTotal: config.transaction_fee,
+			transactionFee: process.env.TRANSACTION_FEE,
+			transactionTotal: process.env.TRANSACTION_FEE,
 			addressValidated: false,
 			publicKey: null,
 			error: null,
@@ -132,7 +130,7 @@ class SendCoinForm extends Component {
 
 	renderError = () => {
 		if ( this.state.error ) {
-			return <TextAlert>{T.translate( this.state.error, { minimum_balance: config.minimum_balance, unit: process.env.UNIT } )}</TextAlert>;
+			return <TextAlert>{T.translate( this.state.error, { minimum_balance: process.env.MINIMUM_BALANCE, unit: process.env.UNIT } )}</TextAlert>;
 		}
 		else {
 			return '';

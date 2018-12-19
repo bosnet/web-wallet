@@ -14,8 +14,6 @@ import closeIcon from 'assets/imgs/hide-error-detail.png';
 import pageview from "utils/pageview";
 import BigNumber from "bignumber.js";
 
-const config = require( 'config.json' );
-
 class TransactionConfirm extends Component {
 	constructor() {
 		super();
@@ -32,14 +30,7 @@ class TransactionConfirm extends Component {
     const paymentData = this.props.paymentData;
 
 		const sendPayment = callback => {
-			let url = config.api_url;
-
-			if (!config.test_mode) {
-				url = config.main_url;
-			}
-	
-
-			fetch(`${url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
+			fetch(`${process.env.API_URL}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -73,13 +64,7 @@ class TransactionConfirm extends Component {
 		};
 
 		const createAccount = callback => {
-			let url = config.api_url;
-
-			if (!config.test_mode) {
-				url = config.main_url;
-			}
-
-			fetch(`${url}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
+			fetch(`${process.env.API_URL}/api/v1/accounts/${this.props.keypair.publicKey()}`, {
 				method: 'GET',
 				timeout: 3000,
 				headers: {
@@ -126,13 +111,7 @@ class TransactionConfirm extends Component {
 		};
 
 		const checkAddressExist = () => {
-				let url = config.api_url;
-
-				if (!config.test_mode) {
-					url = config.main_url;
-				}
-	
-        fetch(`${url}/api/v1/accounts/${this.props.paymentData.destination}`, {
+        fetch(`${process.env.API_URL}/api/v1/accounts/${this.props.paymentData.destination}`, {
           method: 'GET',
           timeout: 3000,
           headers: {
@@ -241,7 +220,7 @@ class TransactionConfirm extends Component {
 							<tr>
 								<td>{T.translate( "common.transaction_fee" )}</td>
 								<td>
-									<AmountSpan value={ config.transaction_fee }/> BOS
+									<AmountSpan value={ process.env.TRANSACTION_FEE }/> BOS
 								</td>
 							</tr>
 							<tr>

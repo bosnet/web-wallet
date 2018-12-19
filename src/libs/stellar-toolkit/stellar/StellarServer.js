@@ -1,5 +1,3 @@
-const config = require( 'config.json' );
-
 let _regenerator = require( 'babel-runtime/regenerator' );
 
 let _regenerator2 = _interopRequireDefault( _regenerator );
@@ -18,7 +16,7 @@ let generateTestPair = function () {
 						pair = Stellar.Keypair.random();
 						_context.prev = 1;
 						_context.next = 4;
-						return fetch( config.api_url + '/friendbot?addr=' + pair.publicKey() );
+						return fetch( process.env.API_URL + '/friendbot?addr=' + pair.publicKey() );
 
 					case 4:
 						return _context.abrupt( 'return', pair );
@@ -73,12 +71,12 @@ let getAccount = function getAccount( accountId ) {
 let switchNetwork = function switchNetwork( network ) {
 	switch ( network ) {
 		case 'public':
-			Server = new Stellar.Server( config.api_url );
+			Server = new Stellar.Server( process.env.API_URL );
 			Stellar.Network.usePublicNetwork();
 			break;
 		default:
 		case 'test':
-			Server = new Stellar.Server( config.api_url );
+			Server = new Stellar.Server( process.env.API_URL );
 			Stellar.Network.useTestNetwork();
 			break;
 	}

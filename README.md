@@ -14,19 +14,20 @@ $ yarn start # or npm run start
 
 ## Config
 
-You can change `src/config.json`.
+You can set environment variables.
 
-- `test_mode`: If you set `true`, change background and main page view.
-- `api_url`: TESTNET API URL
--	`main_url`: MAINNET API URL
-- `passphrases`: Horizon API Pass Phrases
-- `transaction_fee`: Transaction Fee
-- `minimum_balance`: Minimum Balance
-- `ks_url`: Kill Switch file path or API url
-- `ks_interval`: Kill Switch check cycle (second unit)
-- `active_make_a_new_key`: Show 'Make a new key' Button
-- `active_create_test_account`: Show 'Create new account on TestNet' Button
-- `ga_id`: Google Analytics ID
+- `TEST_MODE`: If you set `true`, change background and main page view.
+- `API_URL`: SEBAK API URL
+- `NETWORK_ID`: SEBAK network id
+- `KS_URL`: Kill Switch file path or API url
+- `KS_INTERVAL`: Kill Switch check cycle (second unit)
+- `ANGELBOT_URL`: angelbot URL to create an account for test purpose
+- `PASSPHRASES`: Horizon API Pass Phrases
+- `TRANSACTION_FEE`: Transaction Fee
+- `MINIMUM_BALANCE`: Minimum Balance
+- `ACTIVE_MAKE_A_NEW_KEY`: Show 'Make a new key' Button
+- `ACTIVE_CREATE_TEST_ACCOUNT`: Show 'Create new account on TestNet' Button
+- `GA_ID`: Google Analytics ID
 
 ## Kill Switch data format
 

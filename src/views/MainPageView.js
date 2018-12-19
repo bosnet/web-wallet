@@ -11,8 +11,6 @@ import moment from 'moment';
 import BigNumber from "bignumber.js";
 import pageview from 'utils/pageview';
 
-const config = require( 'config.json' );
-
 class MainPageView extends Component {
 	constructor() {
 		super();
@@ -45,7 +43,7 @@ class MainPageView extends Component {
 	generateValidAccount = async () => {
 		const keypair = Keypair.random();
 		
-		return fetch(`${config.angelbot_url}/account/${keypair.publicKey()}?balance=100000000`, {
+		return fetch(`${process.env.ANGELBOT_URL}/account/${keypair.publicKey()}?balance=100000000`, {
       method: 'GET',
       timeout: 3000,
       headers: {
@@ -104,7 +102,7 @@ class MainPageView extends Component {
 								}
 								{ !this.props.maintenance.onMaintenance &&
 									<div>
-										{ !config.test_mode &&
+										{ !process.env.TEST_MODE &&
 										<div>
 											{process.env.UNIT === 'BOS' ? (
 												<img className={'main-logo'} src={symbolImage} alt="BOSCoin symbol"/>
@@ -114,21 +112,21 @@ class MainPageView extends Component {
 											<T.p className={'title'} text="welcome_view.title"/>
 										</div>
 										}
-										{ config.test_mode &&
+										{ process.env.TEST_MODE &&
 										<div className="test-mode" dangerouslySetInnerHTML={{ __html: T.translate( 'welcome_view.test_mode' ) }}/>
 										}
 
 										{process.env.UNIT === 'BOS' && (
 											<T.p
-												className={config.test_mode ? 'ht' : 'ht_test'}
+												className={process.env.TEST_MODE ? 'ht' : 'ht_test'}
 												text={{
-													key: config.test_mode ? "welcome_view.title_description_test" : "welcome_view.title_description",
+													key: process.env.TEST_MODE ? "welcome_view.title_description_test" : "welcome_view.title_description",
 													coin_name: process.env.COIN_NAME,
 												}}/>
 										)}
 
 										<div className={'button-group'}>
-											{config.active_make_a_new_key&&
+											{process.env.ACTIVE_MAKE_A_NEW_KEY&&
 											<div>
 												<BlueButton big onClick={this.clickMakeNewKey}>
 													<T.span text="welcome_view.button_make"/>
@@ -136,7 +134,7 @@ class MainPageView extends Component {
 											</div>
 											}
 
-											{config.active_create_test_account&&
+											{process.env.ACTIVE_CREATE_TEST_ACCOUNT&&
 											<div>
 												<BlueButton big onClick={() => this.createAccount()}>
 													<T.span text="welcome_view.create_account"/>

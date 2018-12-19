@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AmountSpan from "./AmountSpan";
 import * as actions from "actions/index";
 import BigNumber from "bignumber.js";
-const config = require( 'config.json' );
 
 class MyBalance extends Component {
 
@@ -14,14 +13,8 @@ class MyBalance extends Component {
     if( !keypair) {
       return;
     }
-		
-		let url = config.api_url;
 
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
-		
-    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
+    fetch(`${process.env.API_URL}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {

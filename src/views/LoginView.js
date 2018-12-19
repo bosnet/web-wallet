@@ -11,8 +11,6 @@ import pageview from 'utils/pageview';
 import store from '../observables/store';
 import BigNumber from "bignumber.js";
 
-const config = require( 'config.json' );
-
 class LoginView extends Component {
 	constructor() {
 		super();
@@ -40,13 +38,7 @@ class LoginView extends Component {
 	}
 
 	requestAccount = ( keypair ) => {
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
-
-    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
+    fetch(`${process.env.API_URL}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {

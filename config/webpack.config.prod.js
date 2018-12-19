@@ -369,8 +369,22 @@ module.exports = {
 		new webpack.IgnorePlugin( /^\.\/locale$/, /moment$/ ),
 		// set unit name for currency
 		new webpack.DefinePlugin({
-			'process.env.COIN_NAME': JSON.stringify(process.env.COIN_NAME) || JSON.stringify('BOScoin'),
-			'process.env.UNIT': JSON.stringify(process.env.UNIT) || JSON.stringify('BOS'),
+			'process.env': {
+				'COIN_NAME': JSON.stringify(process.env.COIN_NAME) || JSON.stringify('BOScoin'),
+				'UNIT': JSON.stringify(process.env.UNIT) || JSON.stringify('BOS'),
+				'KS_URL': JSON.stringify(process.env.KS_URL),
+				'KS_INTERVAL': JSON.stringify(process.env.KS_INTERVAL) || 5,
+				'ANGELBOT_URL': JSON.stringify(process.env.ANGELBOT_URL),
+				'MINIMUM_BALANCE': JSON.stringify(process.env.MINIMUM_BALANCE) || 0.1,
+				'TRANSACTION_FEE': JSON.stringify(process.env.TRANSACTION_FEE) || 0.001,
+				'PASSPHRASES': JSON.stringify(process.env.PASSPHRASES),
+				'GA_ID': JSON.stringify(process.env.GA_ID),
+				'ACTIVE_MAKE_A_NEW_KEY': JSON.stringify(process.env.ACTIVE_MAKE_A_NEW_KEY),
+				'ACTIVE_CREATE_TEST_ACCOUNT': JSON.stringify(process.env.ACTIVE_CREATE_TEST_ACCOUNT),
+				'API_URL': JSON.stringify(process.env.API_URL),
+				'NETWORK_ID': JSON.stringify(process.env.NETWORK_ID),
+				'TEST_MODE': JSON.stringify(process.env.TEST_MODE),
+			}
 		}),
 	],
 	// Some libraries import Node modules but don't use them in the browser.

@@ -9,8 +9,8 @@ const config = require( '../../config.json' );
  * @type {{PUBLIC: string, TESTNET: string}}
  */
 export const Networks = {
-	PUBLIC: config.passphrases,
-	TESTNET: config.passphrases,
+	PUBLIC: process.env.PASSPHRASES,
+	TESTNET: process.env.PASSPHRASES,
 };
 
 var current = null;

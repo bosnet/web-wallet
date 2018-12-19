@@ -1,5 +1,4 @@
 import sebakjs from 'sebakjs-util';
-const config = require( 'config.json' );
 
 const makeFullISOString = (str) => {
   return str.slice(0, str.length - 1) + '000000' + str.slice(str.length - 1 + Math.abs(0));
@@ -65,7 +64,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   };
 
 
-  const nid = config.test_mode ? config.network_id : config.main_network_id;
+  const nid = process.env.NETWORK_ID;
 
   const RDPData = makeRLPData(HType, body.B);
   const hash = sebakjs.hash(RDPData);
@@ -74,13 +73,7 @@ const makeTransaction = (keypair, target, amount, type, lastSequenceId) => {
   body.H.hash = hash;
   body.H.signature = sig;
 
-  let url = config.api_url;
-
-  if (!config.test_mode) {
-    url = config.main_url;
-  }
-
-  return fetch(`${url}/api/v1/transactions`, {
+  return fetch(`${process.env.API_URL}/api/v1/transactions`, {
     method: 'POST',
     timeout: 3000,
     headers: {

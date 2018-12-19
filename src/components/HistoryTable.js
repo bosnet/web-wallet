@@ -7,8 +7,6 @@ import AmountSpan from "./AmountSpan";
 import * as actions from "actions/index";
 import BigNumber from "bignumber.js";
 
-const config = require( 'config.json' );
-
 class HistoryTable extends Component {
 	RENDER_ITEM_PER = 10;
 
@@ -34,11 +32,7 @@ class HistoryTable extends Component {
 
 		this.props.resetHistory();
 		
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
+		const url = process.env.API_URL;
 
     fetch(`${url}/api/v1/accounts/${keypair.publicKey()}/operations?reverse=true&limit=10`, {
       method: 'GET',
@@ -111,11 +105,7 @@ class HistoryTable extends Component {
 	readMore = () => {
 		const prev = this.state.prev;
 
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
+		const url = process.env.API_URL;
 
 		fetch(`${url}${prev}`, {
 			method: 'GET',

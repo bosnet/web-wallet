@@ -37,9 +37,8 @@ import RecordSeeds from 'modal-popups/RecordSeeds';
 import './App.scss';
 import 'assets/sass/App.scss';
 
-const config = require( 'config.json' );
 const ReactGA = require( 'react-ga' );
-ReactGA.initialize( config.ga_id );
+ReactGA.initialize( process.env.GA_ID );
 
 class App extends Component {
 	constructor() {
@@ -52,7 +51,9 @@ class App extends Component {
 		const userLang = navigator.language || navigator.userLanguage;
 		this.selectLang( userLang );
 
-		this.checkKillSwitch();
+		if (process.env.KS_URL) {
+			this.checkKillSwitch();
+		}
 	}
 
 	selectLang( $lang ) {
@@ -77,7 +78,7 @@ class App extends Component {
 	checkKillSwitch = () => {
 		const queue = [];
 		queue.push( callback => {
-			axios.get( config.ks_url + '?' + Math.random())
+			axios.get( process.env.KS_URL + '?' + Math.random())
 				.then( response => {
 					if ( response.data !== undefined ) {
 						callback( null, response.data );
@@ -137,7 +138,7 @@ class App extends Component {
 
 			setTimeout( () => {
 				this.checkKillSwitch();
-			}, config.ks_interval * 1000 );
+			}, process.env.KS_INTERVAL * 1000 );
 		} );
 	};
 
@@ -198,7 +199,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		if( config.test_mode ) {
+		if( process.env.TEST_MODE ) {
 			document.querySelector( 'body' ).className += ' test-mode';
 		}
 	}

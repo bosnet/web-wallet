@@ -46,9 +46,9 @@
 		"test_mode": "This is a <strong>Mainnet TEST Web-wallet!</strong>"
 	},
 	"login_view": {
-		"header": "输入你的私钥",
+		"header": "输入您的私钥",
 		"guide_line_1": "请输入你的私钥，打开您的账户.",
-		"guide_line_2": "请在安全的地方写下您的公共地址和私钥。确保您不要忘记或泄漏您的私钥。您可能丢失您的所有BOScoin！",
+		"guide_line_2": "请在安全的地方写下您的公共地址和私钥。确保您不要忘记或泄漏您的私钥。您将可能丢失您所有的币！",
 		"error": {
 			"invalid_secret_seed": "Invalid Secret Seed or not enough balance."
 		}
@@ -76,7 +76,7 @@
 		"description_line4": "确保私钥的安全.",
 		"warn_line1": "请在记下您的公共地址和私钥并保管在安全的地方.",
 		"warn_line2": "确保您不会遗忘或泄漏您的私钥.",
-		"warn_line3": "否则您可能会丢失您所有的BOScoin!"
+		"warn_line3": "否则您可能会丢失您所有的币！"
 	},
 	"record_seed": {
 		"warn_header1": "记下您的私钥",

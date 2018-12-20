@@ -286,6 +286,7 @@ module.exports = {
 		new HtmlWebpackPlugin( {
 			inject: true,
 			template: paths.appHtml,
+			title: process.env.COIN_NAME || 'BOScoin',
 			minify: {
 				removeComments: true,
 				collapseWhitespace: true,

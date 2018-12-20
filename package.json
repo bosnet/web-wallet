@@ -75,6 +75,7 @@
 		"start": "cross-env NODE_PATH=src node scripts/start.js",
 		"build:testnet": "cross-env NODE_PATH=src KS_URL=\"https://s3-ap-northeast-1.amazonaws.com/testnet-congress-voting-result.blockchainos.org/sebak/ks.json\" ANGELBOT_URL=\"https://testnet-angelbot.blockchainos.org\" PASSPHRASES=\"Test BOS Token Network ; tokennet.test; September 2017\" GA_ID=UA-108856157-1 ACTIVE_MAKE_A_NEW_KEY=true ACTIVE_CREATE_TEST_ACCOUNT=true API_URL=\"https://testnet-sebak.blockchainos.org\" NETWORK_ID=sebak-test-network TEST_MODE=true node scripts/build.js",
 		"build:mainnet": "cross-env NODE_PATH=src API_URL=\"https://mainnet.blockchainos.org\" NETWORK_ID=\"sebak-network; 2018-11-26\" KS_URL=\"https://s3-ap-northeast-1.amazonaws.com/mainnet-congress-voting-result.blockchainos.org/sebak/ks.json\" GA_ID=\"UA-108856157-1\" node scripts/build.js",
+		"build": "cross-env NODE_PATH=src node scripts/build.js",
 		"test": "node scripts/test.js --env=jsdom",
 		"stat": "cross-env NODE_PATH=src NODE_ENV=production webpack --config ./config/webpack.config.prod.js --profile --json > stat.json",
 		"deploy": "aws s3 sync ./build/ s3://tokennet-test-wallet.dev.blockchainos.org/ --acl public-read --delete --profile=boscoin"

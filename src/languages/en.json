@@ -10,9 +10,11 @@
 		"your_account": "My Account",
 		"public_address": "Public Address",
 		"secret_seed": "Secret Seed",
+		"restore_key": "Recovery Key",
 		"receive": "Receive",
 		"account_address": "Account Address",
 		"generator": "Generator",
+		"ok": "OK",
 		"close": "Close",
 		"transaction_fee": "Transaction Fee"
 	},
@@ -47,11 +49,32 @@
 	},
 	"login_view": {
 		"header": "Input your seed",
+		"use_secret_seed": "Use Secret Seed",
+		"use_recovery_key": "Use Recovery Key",
 		"guide_line_1": "Please input your Secret Seed to access your account.",
 		"guide_line_2": "Please keep the Secret Seed to yourself, otherwise access to your wallet could be compromised.",
 		"error": {
-			"invalid_secret_seed": "Invalid Secret Seed or not enough balance."
+			"invalid_secret_seed": "Invalid Secret Seed or not enough balance.",
+			"invalid_account": "You have entered wrong seed, or you have not yet activated this account."
+		},
+		"secret_seed": {
+			"checkbox_text": "Create Recovery Key. Recovery Key allows safer use of the BOScoin Wallet.",
+			"placeholder": "Please enter your Secrete Seed"
+		},
+		"recovery_key": {
+			"guide_rk_line1": "Enter the Recovery Key/Password for the wallet account you want to open..",
+			"guide_rk_line2": "Do not lose or expose your Recovery Key to others. All your coins will be at risk of being stolen.",
+			"placeholder": "Please enter your Recovery Key",
+			"pw_password": "Please enter your password",
+			"guide_password": "Please enter the password for the wallet account you wish to open."
 		}
+	},
+	"confirm_checkbox": {
+		"precaution_1" : "You need a minimum balance to open a valid account. Send a minimum balance of 0.1 BOS after setting up password..",
+		"precaution_2" : "All account name and address book information is stored in the app, and will be lost in case of app deletion or device change. Please keep your Public Address separately.",
+		"precaution_3" : "Password is required for transfer, Secret Seed inquiry, and account import. If your password is lost or forgotten, you cannot recover it, so please remember to store your Password.",
+		"precaution_4" : "Secret Seed and Recovery Key is required to import account. Please do not lose or share with others.",
+		"warning": "* Please check all precautions."
 	},
 	"send_coin": {
 		"input_recipient_address": "Input the Public Address of recipient",
@@ -90,7 +113,7 @@
 		"warn_text3_1": "Please confirm your Seeds again. You may lose all of your funds",
 		"warn_text3_2": "if you lose your Seeds.",
 		"warn_text3_3": " Final warning!",
-		"yes": "Yes"
+		"yes": "OK"
 	},
 	"transaction_confirm": {
 		"header": "Confirm Transaction",
@@ -110,6 +133,24 @@
 		"hide_secret_seed": "Hide Secret Seed",
 		"you_just_received": "You have received {amount} BOS for your last transaction",
 		"you_just_sent": "You have sent {amount} BOS for your last transaction"
+	},
+	"set_password": {
+		"header": "Please set the password for this account.",
+		"warn_text_1": "Password is required for transfer, Secret Seed inquiry, and account import. It was ",
+		"warn_text_2": "Please note that your password can not be recovered if it is lost or forgotten.",
+		"input_password": "Please enter a new password with at least 8 characters including uppercase and lowercase letters(English), numbers, and special characters",
+		"input_password_confirm": "Please enter the above password again.",
+		"button_set": "Set up"
+	},
+	"auth_user": {
+		"header": "Please enter the password for this account.",
+		"input_password": "The password contains at least 8 characters, including uppercase and lowercase letters, numbers, and special characters."
+	},
+	"error_message": {
+		"no_password": "Please enter your password.",
+		"password_not_match": "Password does not match.",
+		"invalid_password": "Invalid password. Please check again.",
+		"invalid_restorekey": "Please check Recovery key or password again."
 	},
 	"error_popup": {
 		"main_message": "A temporary error has occurred. Please try again.",

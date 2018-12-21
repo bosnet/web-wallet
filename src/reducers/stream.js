@@ -43,7 +43,9 @@ function stream( state = initialState, action ) {
 				}
 			}
       return returnState;
-    case types.STREAM_OPERATIONS: 
+		case types.STREAM_OPERATIONS: 
+			console.log(state.paymentHistory);
+			console.log(action.operations);
       let paymentHistory = [...state.paymentHistory, ...action.operations ];
 
       return {

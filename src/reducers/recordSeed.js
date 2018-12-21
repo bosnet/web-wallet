@@ -2,6 +2,7 @@ import * as types from 'actions/ActionTypes';
 
 const initialState = {
 	isShow: false,
+	redirect: true,
 };
 
 function recordSeed( state = initialState, action ) {
@@ -11,6 +12,11 @@ function recordSeed( state = initialState, action ) {
 				...state,
 				isShow: action.isShow,
 			};
+		case types.RECORD_SEED_REDIRECT:
+			return {
+				...state,
+				redirect: action.redirect,
+			}
 		default:
 			return state;
 	}

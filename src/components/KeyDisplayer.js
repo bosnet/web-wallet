@@ -45,8 +45,23 @@ class KeyDisplayer extends Component {
 						</div>
 					</div>
 					}
-
 				</div>
+				{ this.props.resKey && this.props.setOpenSecretKey &&
+					<div className="key-boxes">
+						<div className="key-box h-group">
+							<div className="label col">
+								{T.translate( 'common.restore_key' )}
+							</div>
+							<div className="key col">
+								{this.props.resKey ? this.props.resKey : ''}
+							</div>
+							<div className="copy-button col"
+								data-clipboard-text={this.props.resKey ? this.props.resKey : ''}>
+								<BlueButton tiny filled><T.span text="common.copy"/></BlueButton>
+							</div>
+						</div>
+					</div>
+					}
 			</div>
 		)
 	}
@@ -88,6 +103,7 @@ class KeyDisplayer extends Component {
 
 const mapStoreToProps = ( store ) => ({
 	keypair: store.keypair.keypair,
+	resKey: store.keypair.resKey,
 });
 
 const mapDispatchToProps = ( dispatch ) => ({

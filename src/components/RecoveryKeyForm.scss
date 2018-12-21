@@ -1,0 +1,101 @@
+@import '../assets/sass/vendors/response';
+
+.recovery_key_form_container {
+
+	@include response(md) {
+		width: 700px;
+	}
+
+	p {
+		font-size: 11px;
+		font-weight: 200;
+		margin: 18px auto 0.5em;
+		text-align: left;
+	
+		@include response(md) {
+			font-size: 17px;
+			margin: 36px auto 0.5em;
+		}
+	}
+
+	.input-group.dark {
+
+		width: 100%;
+		margin: 20px 0px;
+		@include response(md) {
+			margin: 36px auto;
+			height: auto;
+		}
+	
+		input {
+			background-color: #ffffff;
+			border: none;
+			border-radius: 5px;
+			height: 38px;
+		}
+	
+		.input-password {
+			width: calc(100%);
+			padding-left: 1.5em;
+			font-family: "Noto Sans KR", sans-serif;
+			font-size: 14px;
+			@include response(md) {
+				display: inline-block;
+				width: 100%;
+				font-size: 17px;
+				height: 44px;
+			}
+		}
+	
+		.input-group-label-wrapper {
+			p {
+				text-align: left;
+				display: inline-block;
+				font-size: 11px;
+				color: white;
+				margin: 0px;
+				font-weight: 200;
+				margin-bottom: 0.5em;
+		
+				@include response(md) {
+					&.gt-md {
+						width: 100%;
+						font-size: 17px;
+					}
+				}
+			}
+
+			.gt-md {
+				display: none;
+			}
+		
+			@include response(md) {
+				max-width: 860px;
+				margin: auto;
+		
+				.only-mobile {
+					display: none;
+				}
+		
+				.gt-md {
+					display: inline-block;
+				}
+			}
+		}
+		
+		.input-label {
+			color: white;
+			width: 100%;
+		}
+	}
+
+	.button-wrapper {
+		text-align: center;
+	}
+
+	.error {
+		text-align: center;
+	}
+}
+
+

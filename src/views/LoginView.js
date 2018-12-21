@@ -10,8 +10,13 @@ import StreamManager from "../StreamManager";
 import pageview from 'utils/pageview';
 import store from '../observables/store';
 import BigNumber from "bignumber.js";
+import SecretSeedForm from '../components/SecretSeedForm';
+import RecoveryKeyForm from '../components/RecoveryKeyForm';
 
 const config = require( 'config.json' );
+
+const MODE_SECRET_KEY = '0';
+const MODE_RECOVERY_KEY = '1';
 
 class LoginView extends Component {
 	constructor() {
@@ -20,133 +25,39 @@ class LoginView extends Component {
 		this.state = {
 			redirect: null,
 			isValid: null,
+			mode: MODE_SECRET_KEY,
 		};
+
+		this.onChange = this.onChange.bind(this);
+		this.renderForm = this.renderForm.bind(this);
 	}
 
-	openWallet = () => {
-		if ( this.state.isValid ) {
-			this.props.showTimer( true );
-			this.setState( { redirect: '/wallet' } );
-		}
-	};
 
-	renderRedirect() {
-		if ( this.state.redirect === null ) {
-			return '';
-		}
-		else {
-			return <Redirect to={this.state.redirect}/>
-		}
+	onChange() {
+		console.log("CHANGE");
+		const radio = document.querySelector("input[type=radio]:checked").value;
+		// const value = document.querySelector('#radio').value;
+		this.setState({
+			mode: radio
+		})
 	}
 
-	requestAccount = ( keypair ) => {
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
+	renderForm() {
+		const { mode } = this.state;
+		console.log(mode);
+		console.log(mode === MODE_SECRET_KEY)
+		console.log(mode === MODE_RECOVERY_KEY)
+		switch (mode) {
+			case MODE_SECRET_KEY: 
+				console.log("secret")
+				return	<SecretSeedForm />;
+			case MODE_RECOVERY_KEY:
+				console.log("Recover") 
+				return	<RecoveryKeyForm />;
+			default:
+				return	<SecretSeedForm />;
 		}
-
-    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
-      method: 'GET',
-      timeout: 3000,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(account => {
-
-      if( this.props.keypair ) {
-        if( this.props.keypair.publicKey() !== keypair.publicKey() ) {
-          StreamManager.stopAllStream();
-          this.props.resetHistory();
-
-          // Confirm Account Valid
-          if(account.status) {
-            this.props.updateKeypair( null );
-            this.setState( { isValid: false } );
-    
-            return;
-          }
-    
-          if(account.balance && account.balance === 0) {
-            this.props.updateKeypair( null );
-            this.setState( { isValid: false } );
-    
-            return;
-          }
-    
-          account.balance = new BigNumber(account.balance).div(10000000).toString();
-          this.props.streamAccount(account);
-          this.props.updateKeypair(keypair);
-          store.keypair = keypair;
-
-          this.setState({ isValid: true });       
-        }
-      }
-      else {
-        StreamManager.stopAllStream();
-        this.props.resetHistory();
-
-        // Confirm Account Valid
-        if(account.status) {
-          this.props.updateKeypair( null );
-          this.setState( { isValid: false } );
-  
-          return;
-        }
-  
-        if(account.balance && account.balance === 0) {
-          this.props.updateKeypair( null );
-          this.setState( { isValid: false } );
-  
-          return;
-        }
-  
-        account.balance = new BigNumber(account.balance).div(10000000).toString();
-        this.props.streamAccount(account);
-        this.props.updateKeypair(keypair);
-        store.keypair = keypair;
-        this.setState({ isValid: true });
-      }
-
-      this.props.updateKeypair( keypair );
-      store.keypair = keypair;
-
-      this.setState({ isValid: true });
-    })
-    .catch( error => {
-      this.props.updateKeypair( null );
-      this.setState( { isValid: false } );
-    });
-    
-	};
-
-	validateSeed = ( $event ) => {
-		const value = $event.currentTarget.value.trim();
-		const isValid = StellarTools.validSeed( value );
-		if ( isValid ) {
-			const keypair = StellarTools.KeypairInstance( { secretSeed: value } );
-
-			if( this.props.keypair ) {
-				if( this.props.keypair.publicKey() !== keypair.publicKey() ) {
-					this.requestAccount( keypair );
-				}
-				else {
-					this.setState( { isValid: true } );
-				}
-			}
-			else {
-				this.requestAccount( keypair );
-			}
-		}
-		else {
-			this.setState( { isValid: false } );
-		}
-	};
+	}
 
 	render() {
 		const style = {
@@ -157,9 +68,6 @@ class LoginView extends Component {
 		}
 		return (
 			<div className="login-container">
-
-				{this.renderRedirect()}
-
 				<div className="content-container">
 					<div className="content-middle-wrapper">
 						<div className="content-wrapper">
@@ -168,23 +76,27 @@ class LoginView extends Component {
 									<T.span text="login_view.header"/>
 								</h1>
 								<span className="under-line-blue"> </span>
-								<p>
-									<T.span text="login_view.guide_line_1"/><br/>
-									<T.span text="login_view.guide_line_2"/>
-								</p>
-
-								<textarea placeholder={T.translate( 'login_view.header' )} onChange={this.validateSeed}
-										  style={style}
-								/>
-								{ ( this.state.isValid !== null && this.state.isValid === false ) &&
-								<p className="error">
-									<T.span text="login_view.error.invalid_secret_seed"/>
-								</p>
-								}
-								<p className="button-wrapper">
-									<BlueButton medium onClick={this.openWallet} disabled={!this.state.isValid}><T.span
-										text="common.open"/></BlueButton>
-								</p>
+								<div className="radio_box">
+									<label className="radio_container">{T.translate("login_view.use_secret_seed")}
+										<input type="radio"
+											id="radio_ss"
+											name="radio"
+											onChange={ this.onChange }
+											value={MODE_SECRET_KEY}
+										/>
+										<span className="radiomark"></span>
+									</label>
+									<label className="radio_container">{T.translate("login_view.use_recovery_key")}
+										<input type="radio"
+											id="radio_rk"
+											name="radio"
+											onChange={ this.onChange }
+											value={MODE_RECOVERY_KEY}
+										/>
+										<span className="radiomark"></span>
+									</label>
+								</div>
+								{this.renderForm()}
 							</div>
 						</div>
 					</div>
@@ -196,6 +108,8 @@ class LoginView extends Component {
 
 	componentDidMount() {
 		pageview();
+
+		document.querySelector("#radio_ss").checked = true;
 	}
 }
 

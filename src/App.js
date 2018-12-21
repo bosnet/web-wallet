@@ -22,11 +22,14 @@ import WalletView from './views/WalletView';
 import LoginView from './views/LoginView';
 import SendCoinView from './views/SendCoinView';
 import ReceiveCoinView from './views/ReceiveCoinView';
+import AddRestoreKeyView from './views/AddRestoreKeyView';
 import Header from 'components/Header';
 import Spinner from 'components/Spinner';
 import CopyComplete from 'components/CopyComplete';
+import AuthUser from 'modal-popups/AuthUser';
 import ConfirmGeneratorOpen from 'modal-popups/ConfirmGeneratorOpen';
-import KeyGenerator from 'modal-popups/KeyGenerator'
+import KeyGenerator from 'modal-popups/KeyGenerator';
+import SetPassword from 'modal-popups/SetPassword';
 import TransactionConfirm from 'modal-popups/TransactionConfirm';
 import TransactionComplete from 'modal-popups/TransactionComplete';
 import RecordSeeds from 'modal-popups/RecordSeeds';
@@ -149,6 +152,10 @@ class App extends Component {
 				<ConfirmGeneratorOpen modalOpen={this.props.showGeneratorConfirm}/>
 				}
 
+				{ this.props.showSetPassword &&
+				<SetPassword modalOpen={this.props.showSetPassword}/>
+				}
+
 				{ this.props.showKeyGenerator &&
 				<KeyGenerator modalOpen={this.props.showKeyGenerator}/>
 				}
@@ -169,6 +176,10 @@ class App extends Component {
 				<CopyComplete show={this.props.showCopyComplete}/>
 				}
 
+				{ this.props.showAuthUser &&
+				<AuthUser modalOpen={this.props.showAuthUser}/>
+				}
+
 
 				{ this.props.showSpinner &&
 				<Spinner spinnerShow={this.props.showSpinner}/>
@@ -181,7 +192,8 @@ class App extends Component {
 				<Route path="/login" component={LoginView}/>
 				<Route path="/send" component={SendCoinView}/>
 				<Route path="/receive" component={ReceiveCoinView}/>
-
+				<Route path="/add_reskey" component={AddRestoreKeyView}/>
+				
 				<div className="copyright">
 					BlockchainOS Inc.
 				</div>
@@ -206,7 +218,9 @@ const mapStateToProps = ( state ) => ({
 	showSpinner: state.spinner.isShow,
 	showKeyGenerator: state.keyGenerator.isShow,
 	showGeneratorConfirm: state.generatorConfirm.isShow,
+	showSetPassword: state.setPassword.isShow,
 	showRecordSeed: state.recordSeed.isShow,
+	showAuthUser: state.authUser.isShow,
 	showCopyComplete: state.copyComplete.isShow,
 	showTransactionConfirm: state.transactionConfirm.isShow,
 	showTransactionComplete: state.transactionComplete.isShow,

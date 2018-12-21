@@ -2,6 +2,8 @@ import language from './language';
 import keypair from './keypair';
 import spinner from './spinner';
 import keyGenerator from './keyGenerator';
+import setPassword from './setPassword';
+import authUser from './authUser';
 import generatorConfirm from './generatorConfirm';
 import recordSeed from './recordSeed';
 import copyComplete from './copyComplete';
@@ -18,6 +20,8 @@ const reducers = combineReducers( {
 	keypair,
 	spinner,
 	keyGenerator,
+	setPassword,
+	authUser,
 	generatorConfirm,
 	recordSeed,
 	copyComplete,

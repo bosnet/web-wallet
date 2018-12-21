@@ -26,6 +26,7 @@ class MainPageView extends Component {
 	}
 
 	clickMakeNewKey = () => {
+		this.props.recordSeedRedirect(false);
 		this.props.showGeneratorConfirm( true );
 	};
 
@@ -74,9 +75,10 @@ class MainPageView extends Component {
 		this.generateValidAccount()
 			.then( ( newPair ) => {
 				this.props.showSpinner( false );
+				this.props.recordSeedRedirect(false);
 				this.props.updateKeypair( newPair );
 				this.props.showGeneratorConfirm( false );
-				this.props.showKeyGenerator( true );
+				this.props.showSetPassword( true );
 			} );
 	}
 
@@ -171,6 +173,9 @@ const mapDispatchToProps = ( dispatch ) => ({
 	showKeyGenerator: ( $isShow ) => {
 		dispatch( actions.showKeyGenerator( $isShow ) );
 	},
+	showSetPassword: ( $isShow ) => {
+		dispatch( actions.showSetPassword( $isShow ) );
+	},
 	streamAccount: ( $account ) => {
 		dispatch( actions.streamAccount( $account ) );
 	},
@@ -180,6 +185,9 @@ const mapDispatchToProps = ( dispatch ) => ({
 	resetHistory: () => {
 		dispatch( actions.resetHistory() );
 	},
+	recordSeedRedirect: ( $redirect) => {
+    dispatch( actions.recordSeedRedirect( $redirect) );
+  },
 });
 
 MainPageView = connect( mapStoreToProps, mapDispatchToProps )( MainPageView );

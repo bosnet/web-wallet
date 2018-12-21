@@ -21,7 +21,7 @@ class RecordSeeds extends Component {
 
 	closeRecordSeed = () => {
 		this.props.showRecordSeed( false );
-		this.props.updateKeypair( null );
+		if (!this.props.redirect) this.props.updateKeypair( null );
 	};
 
 	renderWarningMessage = () => {
@@ -44,8 +44,8 @@ class RecordSeeds extends Component {
 
 		return <div>
 			<h1 className="warn-header">{this.warningMessages[ this.state.step ][ 0 ]}</h1>
-			<span className="under-line"> </span>
 			<p className="warn-body">{this.warningMessages[ this.state.step ][ 1 ]}</p>
+			<span className="under-line"> </span>
 		</div>;
 	};
 
@@ -83,6 +83,7 @@ class RecordSeeds extends Component {
 
 const mapStoreToProps = ( store ) => ( {
 	language: store.language.language,
+	redirect: store.recordSeed.redirect,
 } );
 
 const mapDispatchToProps = ( dispatch ) => ({

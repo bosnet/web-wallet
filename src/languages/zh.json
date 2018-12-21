@@ -1,18 +1,20 @@
 {
 	"common": {
 		"copy": "复制",
-		"open": "打开",
+		"open": "开启",
 		"send": "发送",
 		"cancel": "取消",
 		"account": "账户",
 		"amount": "数量",
 		"total_amount": "总数",
-		"your_account": "你的账户",
-		"public_address": "公共地址",
+		"your_account": "您的账户",
+		"public_address": "公钥",
 		"secret_seed": "私钥",
+		"restore_key": "复原码",
 		"receive": "接收",
 		"account_address": "账户地址",
-		"generator": "生成器",
+		"generator": "产生器",
+		"ok": "确认",
 		"close": "关闭",
 		"transaction_fee": "手续费"
 	},
@@ -22,60 +24,81 @@
 	},
 	"welcome_view": {
 		"title": "",
-    "title_description": "基于主网(Mainnet)独家打造的{coin_name}钱包。\n· 建立新账号，登入账号，交易{coin_name}，查看交易内容与记录。\n· 我们已将您的{coin_name}从Tokennet自动转移至Mainnet。钱包的使用方法与以往相同。\n· 您可以在Tokennet的钱包查询“Tokennet”的交易记录。（https://wallet-tokennet.boscoin.io）。\n· 测试网（Testnet）的钱包只适用于“测试“。请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。\n\n",
-    "title_description_test": "测试网（Testnet）的钱包只适用于“测试“。\n请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。",
-		"button_make": "生成私钥",
-		"create_account": "在测试网络上创建账户",
-		"button_open": "打开你的钱包",
-		"guide_title": "如何让你的账户发送{coin_name}",
+		"title_description": "基于主网(Mainnet)独家打造的{coin_name}钱包。\n· 建立新账号，登入账号，交易{coin_name}，查看交易内容与记录。\n· 我们已将您的{coin_name}从Tokennet自动转移至Mainnet。钱包的使用方法与以往相同。\n· 您可以在Tokennet的钱包查询“Tokennet”的交易记录。（https://wallet-tokennet.boscoin.io）。\n· 测试网（Testnet）的钱包只适用于“测试“。请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。\n\n",
+		"title_description_test": "测试网（Testnet）的钱包只适用于“测试“。\n请勿将{coin_name}从主网（Mainnet）转发至测试网（Testnet）。",
+		"button_make": "建立私钥",
+		"create_account": "在测试网络上创建立户",
+		"button_open": "打开您的钱包",
+		"guide_title": "如何从您的账户发送{coin_name}",
 		"guide": {
-			"step1_1": "生成新的密钥，按 ",
-			"step1_2": " 按钮",
-			"step2": "记下两个密钥并保持安全（非常重要!!）",
-			"step3_1": "打开你的账户，按 ",
-			"step3_2": " 按钮",
-			"step4": "在空白处输入你的私钥",
-			"step5_1": "按 ",
-			"step5_2": " 按钮，您将看到您的帐户",
-			"step6_1": "按 ",
-			"step6_2": " 按钮，并将收件人的公共地址输入空白处"
+			"step1_1": "建立新的私钥，请按 ",
+			"step1_2": "按钮",
+			"step2": "请记下两个私钥并安全保管（非常重要!!）",
+			"step3_1": "打开您的账户，请按 ",
+			"step3_2": "按钮",
+			"step4": "在空白处输入您的私钥",
+			"step5_1": "请按",
+			"step5_2": "按钮，您将看到您的帐户",
+			"step6_1": "请·按",
+			"step6_2": "按钮，并将收件人的公钥输入于空白处"
 		},
 		"error": {
-			"fail_create_account": "无法创建账户."
+			"fail_create_account": "无法建立账户。"
 		},
-		"test_mode": "This is a <strong>Mainnet TEST Web-wallet!</strong>"
+		"test_mode": "注意！这是主网<strong>的测试网钱包</strong>"
 	},
 	"login_view": {
 		"header": "输入您的私钥",
+		"use_secret_seed": "使用私钥",
+		"use_recovery_key": "使用复原码",
 		"guide_line_1": "请输入你的私钥，打开您的账户.",
 		"guide_line_2": "请在安全的地方写下您的公共地址和私钥。确保您不要忘记或泄漏您的私钥。您将可能丢失您所有的币！",
 		"error": {
-			"invalid_secret_seed": "Invalid Secret Seed or not enough balance."
+			"invalid_secret_seed": "您输入的私钥错误或您的逾额不足。",
+			"invalid_account": "输入的私钥/密码有误或账户尚未开通。"
+		},
+		"secret_seed": {
+			"checkbox_text": "建立复原码。让您的BOScoin钱包更安全。",
+			"placeholder": "请输入您的私钥"
+		},
+		"recovery_key": {
+			"guide_rk_line1": "请输入您的复原码/密码，打开您的账户。",
+			"guide_rk_line2": "请勿遗失或将您的复原码泄露給他人知道。您有可能会丢失您所有的BOScoin。",
+			"placeholder": "请输入您的复原码",
+			"pw_password": "请输入密码",
+			"guide_password": "请输入您的密码。"
 		}
 	},
+	"confirm_checkbox": {
+		"precaution_1" : "您的钱包需要最少0.1BOS才能启动。设置密码后，请您发送最少0.1BOS至您的钱包。",
+		"precaution_2" : "所有的账户名字与公钥通讯录是记录在您的app里。如果您删除app或更换手机，这些资讯将会被移除。请您将公钥资讯安全地另外记录下来。",
+		"precaution_3" : "您必须使用您的密码做转账交易，私钥查询，导入账户。密码一旦遗失，无法找回。请您务必将您的密码安全地记录下来。",
+		"precaution_4" : "您必须使用您的私钥与复原码导入您的账户。请勿将这些资讯泄露給他人知道。",
+		"warning": "* 请确认所有的注意事项，并点选。"
+	},
 	"send_coin": {
-		"input_recipient_address": "请输入收款人的公共地址",
+		"input_recipient_address": "请输入收款人的公钥",
 		"input_amount": "输入您想发送的数量",
 		"transaction_fee": "交易费",
 		"total_will_be_sent": "总共 {amount} {unit} 将会发送给收款人",
 		"error": {
-			"public_address_null": "输入收款人的公共地址",
+			"public_address_null": "输入收款人的公钥",
 			"transaction_amount_null": "输入交易金额",
 			"transaction_amount_zero": "输入交易金额",
 			"not_enough_balance": "余额不足",
-			"incorrect_public_address": "公共地址不正确",
-			"minimum_balance": "转出后地址保证最少余额为 {minimum_balance} {unit}.",
-			"decimal_limit": "您只能输入到小数点后7位."
+			"incorrect_public_address": "公钥不正确",
+			"minimum_balance": "转出后地址保证最少余额为 {minimum_balance} {unit}。",
+			"decimal_limit": "您只能输入到小数点后7位。"
 		}
 	},
 	"key_generator": {
 		"header": "点击生成新的私钥和地址",
-		"description_line1": "此工具不会创建一个帐户.",
+		"description_line1": "此工具不会创建一个帐户。",
 		"description_line2": "您必须将创建账户操作发送到有以下内容",
-		"description_line3": "具有起始余额的地址，因此它可以存在. ",
-		"description_line4": "确保私钥的安全.",
-		"warn_line1": "请在记下您的公共地址和私钥并保管在安全的地方.",
-		"warn_line2": "确保您不会遗忘或泄漏您的私钥.",
+		"description_line3": "具有起始余额的地址，因此它可以存在。 ",
+		"description_line4": "确保私钥的安全。",
+		"warn_line1": "请在记下您的公共地址和私钥并保管在安全的地方。",
+		"warn_line2": "确保您不会遗忘或泄漏您的私钥。",
 		"warn_line3": "否则您可能会丢失您所有的币！"
 	},
 	"record_seed": {
@@ -83,18 +106,18 @@
 		"warn_header2_1": "记下您的私钥",
 		"warn_header2_2": "现在!",
 		"warn_header3": "不要丢失您的私钥!!!",
-		"warn_text1_1": "请务必牢牢记下您的公共地址和私钥.",
-		"warn_text1_2": "确保不要丢失或分享私钥，这是您钱包的私钥.",
-		"warn_text2_1": "请您仔细检查私钥是否正确.",
-		"warn_text2_2": "您对您的私钥负全部责任.",
+		"warn_text1_1": "请务必牢牢记下您的公钥和私钥。",
+		"warn_text1_2": "确保不要丢失或分享私钥，这是您钱包的私钥。",
+		"warn_text2_1": "请您仔细检查私钥是否正确。",
+		"warn_text2_2": "您对您的私钥负全部责任。",
 		"warn_text3_1": "请您再次检查种子是否正确，如果您丢失了私钥",
-		"warn_text3_2": "您将会丢失所有的资金.",
-		"warn_text3_3": "最后警告.",
+		"warn_text3_2": "您将会丢失所有的资金。",
+		"warn_text3_3": "最后警告。",
 		"yes": "确认"
 	},
 	"transaction_confirm": {
 		"header": "确认交易",
-		"text": "请再次确认您的交易."
+		"text": "请再次确认您的交易。"
 	},
 	"transaction_complete": {
 		"header": "交易完成!",
@@ -104,15 +127,33 @@
 		"balance": "余额",
 		"sent": "发送",
 		"received": "接收",
-		"created_account": "创建账户",
+		"created_account": "建立账户",
 		"history": "交易记录",
 		"open_secret_seed": "显示私钥",
 		"hide_secret_seed": "隐藏私钥",
 		"you_just_received": "您收到上次交易的 {amount} {unit} ",
 		"you_just_sent": "您已发送最后一次交易的 {amount} {unit} "
 	},
+	"set_password": {
+		"header": "请设置密码。",
+		"warn_text_1": "您必须使用密码做转账交易，复原码查询，导入账号。",
+		"warn_text_2": "密码一旦遗失，无法找回。请您务必将您的密码安全地记录下来。",
+		"input_password": "必须包含至少8个 英文字母（大/小写）, 数字, 特殊符号。",
+		"input_password_confirm": "请再次输入与上列相同的密码。",
+		"button_set": "设置"
+	},
+	"auth_user": {
+		"header": "请输入此账户的密码。",
+		"input_password": "必须包含至少8个 英文字母（大/小写）, 数字, 特殊符号。"
+	},
+	"error_message": {
+		"no_password": "请输入密码。",
+		"password_not_match": "您输入的密码不正确。",
+		"invalid_password": "密码错误。请重新输入。",
+		"invalid_restorekey": "请再次检查您的复原码或密码。"
+	},
 	"error_popup": {
-		"main_message": "发生临时错误. 请再试一下.",
+		"main_message": "发生临时错误。 请再试一下。",
 		"learn_more": "了解更多",
 		"close": "关闭"
 	},

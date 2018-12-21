@@ -17,14 +17,14 @@ class KeyGeneratorMessage extends Component {
 					{T.translate( 'key_generator.header' )}
 				</h1>
 
-				<span className="black-line"> </span>
-
-				<p className="show-desktop-block">
+				{!this.props.noDescription && <p className="show-desktop-block">
 					{T.translate( 'key_generator.description_line1' )}<br/>
 					{T.translate( 'key_generator.description_line2' )} <br/>
 					{T.translate( 'key_generator.description_line3' )}<br/>
 					<span>{T.translate( 'key_generator.description_line4' )}</span>
-				</p>
+				</p>}
+
+				<span className="black-line"> </span>
 			</div>
 		)
 	}

@@ -21,6 +21,8 @@ class TransactionConfirm extends Component {
 		this.state = {
 			error: null,
 		};
+
+		this.showSendComplete = this.showSendComplete.bind(this);
 	}
 	showSendComplete = () => {
 		this.props.showSpinner( true );
@@ -143,6 +145,14 @@ class TransactionConfirm extends Component {
 		this.props.transactionConfirm( false, null );
 	};
 
+	doSend = () => {
+		if (!this.props.resKey) {
+			this.showSendComplete();
+		} else {
+			this.props.showAuthUser(true, this.showSendComplete);
+		}
+	}
+
 	render() {
 		let amount = 0;
 		let total = 0;
@@ -235,7 +245,7 @@ class TransactionConfirm extends Component {
 						</table>
 					</div>
 					<p className="button-wrapper">
-						<BlueButton medium onClick={this.showSendComplete}>{T.translate( "common.send" )}</BlueButton>
+						<BlueButton medium onClick={this.doSend}>{T.translate( "common.send" )}</BlueButton>
 						<BlueButton medium
 									onClick={this.hideTransactionConfirm}>{T.translate( "common.cancel" )}</BlueButton>
 					</p>
@@ -251,6 +261,7 @@ class TransactionConfirm extends Component {
 
 const mapStoreToProps = ( store ) => ({
 	keypair: store.keypair.keypair,
+	resKey: store.keypair.resKey,
   paymentData: store.transactionConfirm.paymentData,
   account: store.stream.account,
 });
@@ -261,6 +272,9 @@ const mapDispatchToProps = ( dispatch ) => ({
 	},
 	showSpinner: ( $isShow ) => {
 		dispatch( actions.showSpinner( $isShow ) );
+	},
+	showAuthUser: ( $isShow, $callback ) => {
+		dispatch( actions.showAuthUser( $isShow, $callback ) );
 	},
 	transactionConfirm: ( $isShow, $paymentData ) => {
 		dispatch( actions.showTransactionConfirm( $isShow, $paymentData ) );

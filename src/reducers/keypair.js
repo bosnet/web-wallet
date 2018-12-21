@@ -2,6 +2,7 @@ import * as types from 'actions/ActionTypes';
 
 const initialState = {
 	keypair: null,
+	resKey: null,
 };
 
 function generatorConfirm( state = initialState, action ) {
@@ -10,6 +11,7 @@ function generatorConfirm( state = initialState, action ) {
 			return {
 				...state,
 				keypair: action.keypair,
+				resKey: action.resKey,
 			};
 		default:
 			return state;

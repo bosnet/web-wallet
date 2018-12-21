@@ -5,9 +5,10 @@ export const setLanguage = ( $language ) => ( {
 	language: $language,
 } );
 
-export const updateKeypair = ( $keypair ) => ( {
+export const updateKeypair = ( $keypair, $resKey = null ) => ( {
 	type: types.UPDATE_KEYPAIR,
 	keypair: $keypair,
+	resKey: $resKey,
 } );
 
 export const showSpinner = ( $isShow ) => ( {
@@ -25,10 +26,26 @@ export const showGeneratorConfirm = ( $isShow ) => ( {
 	isShow: $isShow,
 } );
 
+export const showSetPassword = ( $isShow ) => ( {
+	type: types.SHOW_SET_PASSWORD,
+	isShow: $isShow,
+} );
+
 export const showRecordSeed = ( $isShow ) => ( {
 	type: types.SHOW_RECORD_SEED,
 	isShow: $isShow,
 } );
+
+export const showAuthUser = ( $isShow, $callback = null ) => ( {
+	type: types.SHOW_AUTH_USER,
+	isShow: $isShow,
+	callback: $callback,
+} );
+
+export const recordSeedRedirect = ( $redirect ) => ( {
+	type: types.RECORD_SEED_REDIRECT,
+	redirect: $redirect,
+} )
 
 export const showCopyComplete = ( $isShow ) => ( {
 	type: types.SHOW_COPY_COMPLETE,
@@ -79,7 +96,7 @@ export const streamPayment = ( $payment ) => ( {
 
 export const streamOperations = ( $operations ) => ( {
   type: types.STREAM_OPERATIONS,
-	operations: $operations,
+  operations: $operations,
 } );
 
 export const resetHistory = () => ( {

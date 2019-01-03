@@ -62,7 +62,7 @@
 			"placeholder": "Please enter your Secrete Seed"
 		},
 		"recovery_key": {
-			"guide_rk_line1": "Enter the Recovery Key/Password for the wallet account you want to open..",
+			"guide_rk_line1": "Enter the Recovery Key/Password for the wallet account you want to open.",
 			"guide_rk_line2": "Do not lose or expose your Recovery Key to others. All your coins will be at risk of being stolen.",
 			"placeholder": "Please enter your Recovery Key",
 			"pw_password": "Please enter your password",
@@ -70,7 +70,7 @@
 		}
 	},
 	"confirm_checkbox": {
-		"precaution_1" : "You need a minimum balance to open a valid account. Send a minimum balance of 0.1 BOS after setting up password..",
+		"precaution_1" : "You need a minimum balance to open a valid account. Send a minimum balance of 0.1 BOS after setting up password.",
 		"precaution_2" : "All account name and address book information is stored in the app, and will be lost in case of app deletion or device change. Please keep your Public Address separately.",
 		"precaution_3" : "Password is required for transfer, Secret Seed inquiry, and account import. If your password is lost or forgotten, you cannot recover it, so please remember to store your Password.",
 		"precaution_4" : "Secret Seed and Recovery Key is required to import account. Please do not lose or share with others.",
@@ -136,7 +136,7 @@
 	},
 	"set_password": {
 		"header": "Please set the password for this account.",
-		"warn_text_1": "Password is required for transfer, Secret Seed inquiry, and account import. It was ",
+		"warn_text_1": "Password is required for transfer, Secret Seed inquiry, and account import.",
 		"warn_text_2": "Please note that your password can not be recovered if it is lost or forgotten.",
 		"input_password": "Please enter a new password with at least 8 characters including uppercase and lowercase letters(English), numbers, and special characters",
 		"input_password_confirm": "Please enter the above password again.",

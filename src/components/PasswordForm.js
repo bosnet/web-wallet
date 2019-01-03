@@ -9,8 +9,6 @@ import TextAlert from "./TextAlert";
 import { Keypair } from 'libs/stellar-sdk';
 import { encryptWallet } from 'libs/keyCipher';
 
-const config = require( 'config.json' );
-
 class PasswordForm extends Component {
 	constructor() {
 		super();
@@ -76,7 +74,7 @@ class PasswordForm extends Component {
 
 	renderError = () => {
 		if ( this.state.error ) {
-			return <TextAlert>{T.translate( this.state.error, { minimum_balance: config.minimum_balance } )}</TextAlert>;
+			return <TextAlert>{T.translate( this.state.error, { minimum_balance: process.env.MINIMUM_BALANCE } )}</TextAlert>;
 		}
 		else {
 			return '';

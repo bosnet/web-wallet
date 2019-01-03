@@ -10,8 +10,6 @@ import BigNumber from "bignumber.js";
 import { connect } from "react-redux";
 import * as actions from "actions/index";
 
-const config = require( 'config.json' );
-
 class SecretSeedForm extends Component {
 	constructor() {
 		super();
@@ -40,13 +38,7 @@ class SecretSeedForm extends Component {
 	};
 
 	requestAccount = ( keypair ) => {
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
-
-    fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
+    fetch(`${process.env.API_URL}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {
@@ -149,9 +141,7 @@ class SecretSeedForm extends Component {
 	};
 
 	onChange() {
-		console.log("CHANGE");
 		const checkbox = document.querySelector('.checkbox').checked;
-		console.log(checkbox);
 	}
 
 	renderRedirect() {

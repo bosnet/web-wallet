@@ -11,8 +11,6 @@ import { connect } from "react-redux";
 import * as actions from "actions/index";
 import { decryptWallet } from "libs/keyCipher";
 
-const config = require( 'config.json' );
-
 class RecoveryKeyForm extends Component {
 	constructor() {
 		super();
@@ -34,13 +32,7 @@ class RecoveryKeyForm extends Component {
 	};
 
 	requestAccount = ( keypair, resKey ) => {
-		let url = config.api_url;
-
-		if (!config.test_mode) {
-			url = config.main_url;
-		}
-
-    return fetch(`${url}/api/v1/accounts/${keypair.publicKey()}`, {
+    return fetch(`${process.env.API_URL}/api/v1/accounts/${keypair.publicKey()}`, {
       method: 'GET',
       timeout: 3000,
       headers: {
@@ -52,8 +44,6 @@ class RecoveryKeyForm extends Component {
       return res.json()
     })
     .then(account => {
-			console.log(account);
-			console.log(this.props.keypair)
       if( this.props.keypair ) {
         if( this.props.keypair.publicKey() !== keypair.publicKey() ) {
           StreamManager.stopAllStream();
@@ -95,7 +85,6 @@ class RecoveryKeyForm extends Component {
         StreamManager.stopAllStream();
 				this.props.resetHistory();
 				
-				console.log(account.status);
         // Confirm Account Valid
         if(account.status) {
           this.props.updateKeypair( null );

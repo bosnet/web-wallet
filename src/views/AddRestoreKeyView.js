@@ -9,8 +9,6 @@ import StreamManager from "../StreamManager";
 import pageview from 'utils/pageview';
 import PasswordForm from '../components/PasswordForm';
 
-const config = require( 'config.json' );
-
 class AddRestoreKeyView extends Component {
 	constructor() {
 		super();

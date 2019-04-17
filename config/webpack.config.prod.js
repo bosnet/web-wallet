@@ -299,6 +299,7 @@ module.exports = {
 				minifyCSS: true,
 				minifyURLs: true,
 			},
+      favicon_url: process.env.FAVICON_URL ? process.env.FAVICON_URL : '/favicon-32.png',
 		} ),
 		// Makes some environment variables available to the JS code, for example:
 		// if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.

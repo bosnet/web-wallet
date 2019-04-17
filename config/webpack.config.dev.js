@@ -264,6 +264,7 @@ module.exports = {
 			inject: true,
 			template: paths.appHtml,
 			title: process.env.COIN_NAME || 'BOScoin',
+      favicon_url: process.env.FAVICON_URL ? process.env.FAVICON_URL : '/favicon-32.png',
 		} ),
 		// Add module names to factory functions so they appear in browser profiler.
 		new webpack.NamedModulesPlugin(),

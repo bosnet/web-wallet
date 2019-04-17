@@ -199,9 +199,12 @@ class App extends Component {
 					{process.env.UNIT === 'BOS' ? (
 						'BlockchainOS Inc.'
 					) : (
-						process.env.UNIT
+            <a href={process.env.COMPANY_URL}>{process.env.COMPANY_NAME}</a>
 					)}
 				</div>
+      {process.env.CUSTOM_CSS_URL &&
+        <link rel="stylesheet" type="text/css" href={process.env.CUSTOM_CSS_URL} />
+      }
 			</div>
 		);
 	}

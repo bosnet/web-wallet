@@ -58,7 +58,7 @@
 			"invalid_account": "You have entered wrong seed, or you have not yet activated this account."
 		},
 		"secret_seed": {
-			"checkbox_text": "Create Recovery Key. Recovery Key allows safer use of the BOScoin Wallet.",
+			"checkbox_text": "Create Recovery Key. Recovery Key allows safer use of the {coin_name} Wallet.",
 			"placeholder": "Please enter your Secrete Seed"
 		},
 		"recovery_key": {
@@ -70,7 +70,7 @@
 		}
 	},
 	"confirm_checkbox": {
-		"precaution_1" : "You need a minimum balance to open a valid account. Send a minimum balance of 0.1 BOS after setting up password.",
+		"precaution_1" : "You need a minimum balance to open a valid account. Send a minimum balance of 0.1 {unit} after setting up password.",
 		"precaution_2" : "All account name and address book information is stored in the app, and will be lost in case of app deletion or device change. Please keep your Public Address separately.",
 		"precaution_3" : "Password is required for transfer, Secret Seed inquiry, and account import. If your password is lost or forgotten, you cannot recover it, so please remember to store your Password.",
 		"precaution_4" : "Secret Seed and Recovery Key is required to import account. Please do not lose or share with others.",

@@ -41,7 +41,7 @@ class ConfirmCheckbox extends Component {
   render() {
 		return (
       <div className="confirm-checkboxs">
-        <label className="cb-container">{T.translate("confirm_checkbox.precaution_1")}
+        <label className="cb-container">{T.translate("confirm_checkbox.precaution_1", {unit: process.env.UNIT})}
           <input type="checkbox" onChange={this.onChange}/>
           <span className="checkmark"></span>
         </label>

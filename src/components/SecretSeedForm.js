@@ -171,7 +171,7 @@ class SecretSeedForm extends Component {
 			<textarea placeholder={T.translate('login_view.secret_seed.placeholder')} onChange={this.validateSeed}
 				style={style}
 			/>
-			<label className="cb-container">{T.translate("login_view.secret_seed.checkbox_text")}
+			<label className="cb-container">{T.translate("login_view.secret_seed.checkbox_text", {coin_name: process.env.COIN_NAME})}
 			<input type="checkbox" className="checkbox" onChange={this.onChange} />
 				<span className="checkmark"></span>
 			</label>

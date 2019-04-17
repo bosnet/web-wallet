@@ -304,6 +304,9 @@ module.exports = {
 				'API_URL': JSON.stringify(process.env.API_URL),
 				'NETWORK_ID': JSON.stringify(process.env.NETWORK_ID),
 				'TEST_MODE': JSON.stringify(process.env.TEST_MODE),
+				'CUSTOM_CSS_URL': JSON.stringify(process.env.CUSTOM_CSS_URL) || '',
+				'COMPANY_URL': JSON.stringify(process.env.COMPANY_URL) || '',
+				'COMPANY_NAME': JSON.stringify(process.env.COMPANY_NAME) || '',
 			}
 		}),
 	],

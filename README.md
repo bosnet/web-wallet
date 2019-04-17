@@ -28,6 +28,10 @@ You can set environment variables.
 - `ACTIVE_MAKE_A_NEW_KEY`: Show 'Make a new key' Button
 - `ACTIVE_CREATE_TEST_ACCOUNT`: Show 'Create new account on TestNet' Button
 - `GA_ID`: Google Analytics ID
+- `FAVICON_URL`: set custom favicon
+- `CUSTOM_CSS_URL`: custom css url
+- `COMPANY_URL`:  company homepage url
+- `COMPANY_NAME`:  company name
 
 ## Kill Switch data format
 
